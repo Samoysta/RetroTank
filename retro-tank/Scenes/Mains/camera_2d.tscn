@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://chfh8dj8skfh2"]
+
+[ext_resource type="Script" uid="uid://3myyd2fpiy63" path="res://Scripts/Camera2d.cs" id="1_omgnx"]
+
+[node name="Camera2D" type="Camera2D" unique_id=633558077]
+script = ExtResource("1_omgnx")
+duration = 5.0

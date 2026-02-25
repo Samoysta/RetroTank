@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dtg1op7h288lo"]
+
+[ext_resource type="Texture2D" uid="uid://cflln2j3k6m0p" path="res://Assets/bullet1.png" id="1_2dt4e"]
+[ext_resource type="Script" uid="uid://bnr3tp3atjacq" path="res://Scripts/Bullet1.cs" id="1_yxq1y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2dt4e"]
+
+[node name="Bullet1" type="Node2D" unique_id=1309950049 node_paths=PackedStringArray("shapeCast")]
+script = ExtResource("1_yxq1y")
+shapeCast = NodePath("ShapeCast2D")
+speed = 1400.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1339029636]
+z_index = -1
+scale = Vector2(8.835, 3)
+texture = ExtResource("1_2dt4e")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=773259153]
+shape = SubResource("CircleShape2D_2dt4e")
+max_results = 2

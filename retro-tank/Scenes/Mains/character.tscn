@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bd1yxwsnanycd"]
+
+[ext_resource type="Texture2D" uid="uid://61lqifxfm1f4" path="res://Assets/Character.png" id="1_lkv7d"]
+[ext_resource type="Script" uid="uid://dy1p7rhus2m8m" path="res://Scripts/Character.cs" id="1_ushfy"]
+[ext_resource type="PackedScene" uid="uid://dtg1op7h288lo" path="res://Scenes/bullet_1.tscn" id="2_8r4o2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cr2aw"]
+radius = 7.0
+
+[node name="Character" type="CharacterBody2D" unique_id=671721879 node_paths=PackedStringArray("bulletPos") groups=["Player"]]
+slide_on_ceiling = false
+platform_on_leave = 2
+script = ExtResource("1_ushfy")
+Speed = 700.0
+speedAccel = 5.0
+bulletPos = NodePath("BulletPos")
+bullet1 = ExtResource("2_8r4o2")
+bulletCD = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1547081421]
+rotation = 1.5707964
+texture = ExtResource("1_lkv7d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=82068161]
+shape = SubResource("CircleShape2D_cr2aw")
+
+[node name="BulletPos" type="Node2D" parent="." unique_id=677552296]
+position = Vector2(11, 0)
