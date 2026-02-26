@@ -25,14 +25,24 @@ public partial class Bullet1 : Node2D
 			Node2D body = (Node2D)shapeCast.GetCollider(0);
 			if (!body.IsInGroup("Player"))
 			{
+				Vector2 hitPos = shapeCast.GetCollisionPoint(0);
 				if (body.HasMethod("TakeDamage"))
 				{
 					body.Call("TakeDamage", damage);
 				}
-				SetOff();	
+				SetOff();
+				HitEffect(hitPos);
 			}
 		}
     }
+	public void HitEffect(Vector2 hitPos)
+	{
+		Effect ef = character.bulletHitEffects.Dequeue();
+		ef.GlobalPosition = hitPos;
+		ef.GlobalRotationDegrees = GlobalRotationDegrees;
+		ef.SetOn();
+		character.bulletHitEffects.Enqueue(ef);
+	}
 	public void Init(Character body)
 	{
 		character = body;

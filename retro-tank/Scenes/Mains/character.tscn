@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://61lqifxfm1f4" path="res://Assets/Character.png" id="1_lkv7d"]
 [ext_resource type="Script" uid="uid://dy1p7rhus2m8m" path="res://Scripts/Character.cs" id="1_ushfy"]
 [ext_resource type="PackedScene" uid="uid://dtg1op7h288lo" path="res://Scenes/bullet_1.tscn" id="2_8r4o2"]
+[ext_resource type="PackedScene" uid="uid://cvkdt2185gfad" path="res://Scenes/Effects/bullet_hit_effect.tscn" id="3_njf2r"]
+[ext_resource type="PackedScene" uid="uid://cea5yx7urpsnb" path="res://Scenes/Effects/fire_effect.tscn" id="4_vvjlk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cr2aw"]
 radius = 7.0
@@ -16,6 +18,8 @@ speedAccel = 5.0
 bulletPos = NodePath("BulletPos")
 bullet1 = ExtResource("2_8r4o2")
 bulletCD = 0.1
+hitEffect = ExtResource("3_njf2r")
+fireEffect = ExtResource("4_vvjlk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1547081421]
 rotation = 1.5707964

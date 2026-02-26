@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://cea5yx7urpsnb"]
+
+[ext_resource type="Script" uid="uid://dpqtey02w5ow5" path="res://Scripts/Effect.cs" id="1_bprkt"]
+[ext_resource type="Texture2D" uid="uid://bw5jxdb0vhm8g" path="res://Assets/FireEffect1.png" id="2_gyifg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_683qr"]
+atlas = ExtResource("2_gyifg")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yoni0"]
+atlas = ExtResource("2_gyifg")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfqbx"]
+atlas = ExtResource("2_gyifg")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8tgl"]
+atlas = ExtResource("2_gyifg")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nws1b"]
+atlas = ExtResource("2_gyifg")
+region = Rect2(160, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifo6v"]
+atlas = ExtResource("2_gyifg")
+region = Rect2(200, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p7xw4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_683qr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yoni0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfqbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8tgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nws1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifo6v")
+}],
+"loop": false,
+"name": &"Start",
+"speed": 30.0
+}]
+
+[node name="FireEffect" type="Node2D" unique_id=490733582 node_paths=PackedStringArray("cpu", "gpu", "animSprite", "animPlayer")]
+script = ExtResource("1_bprkt")
+cpu = []
+gpu = []
+animSprite = [NodePath("AnimatedSprite2D")]
+animPlayer = []
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1597603617]
+position = Vector2(39, 2)
+rotation = 1.5707964
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_p7xw4")
+animation = &"Start"
+frame = 5
