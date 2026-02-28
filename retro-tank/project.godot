@@ -29,6 +29,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="RetroTank"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/trail_2d/plugin.cfg")
+
 [global_group]
 
 Player=""

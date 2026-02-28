@@ -1,4 +1,12 @@
-AnimatedSprite2D
 CPUParticles2D
-WorldEnvironment
+AnimationPlayer
+CollisionShape2D
+Area2D
+Sprite2D
+CharacterBody2D
 Node2D
+Trail2D
+WorldEnvironment
+Line2D
+VisibleOnScreenNotifier2D
+AnimatedSprite2D

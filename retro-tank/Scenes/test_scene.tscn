@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bd1yxwsnanycd" path="res://Scenes/Mains/character.tscn" id="1_3dogw"]
 [ext_resource type="PackedScene" uid="uid://chfh8dj8skfh2" path="res://Scenes/Mains/camera_2d.tscn" id="1_r5l72"]
+[ext_resource type="PackedScene" uid="uid://duxflro3cm2fw" path="res://Scenes/Enemys/enemy_1.tscn" id="3_50ct6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r5l72"]
 size = Vector2(63, 64)
@@ -19,8 +20,7 @@ gradient = SubResource("Gradient_50ct6")
 target = NodePath("../Character")
 
 [node name="Character" parent="." unique_id=671721879 instance=ExtResource("1_3dogw")]
-position = Vector2(1, 2)
-scale = Vector2(3, 3)
+health = 5
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=454447829]
 collision_mask = 0
@@ -62,3 +62,18 @@ shape = SubResource("RectangleShape2D_r5l72")
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D4" unique_id=185661645]
 position = Vector2(0.5, 0)
 texture = SubResource("GradientTexture2D_hb2xm")
+
+[node name="Enemy1" parent="." unique_id=240781301 node_paths=PackedStringArray("target") instance=ExtResource("3_50ct6")]
+position = Vector2(188, 55)
+motion_mode = 1
+target = NodePath("../Character")
+
+[node name="Enemy2" parent="." unique_id=2045294877 node_paths=PackedStringArray("target") instance=ExtResource("3_50ct6")]
+position = Vector2(340, -58)
+motion_mode = 1
+target = NodePath("../Character")
+
+[node name="Enemy3" parent="." unique_id=1589110324 node_paths=PackedStringArray("target") instance=ExtResource("3_50ct6")]
+position = Vector2(61, 131)
+motion_mode = 1
+target = NodePath("../Character")

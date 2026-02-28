@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bvsl5pv240qca"]
+
+[ext_resource type="Script" uid="uid://dpqtey02w5ow5" path="res://Scripts/Effect.cs" id="1_hxcho"]
+
+[sub_resource type="Curve" id="Curve_6tpqv"]
+_data = [Vector2(0, 0.39306557), 0.0, 0.0, 0, 0, Vector2(1, 0.27703398), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_0e3de"]
+_limits = [0.0, 6.0, 0.0, 1.0]
+_data = [Vector2(0, 6), 0.0, 0.0, 0, 0, Vector2(0.48728812, 2.786818), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_cqhv2"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="HitEffectSmall" type="Node2D" unique_id=1385468231 node_paths=PackedStringArray("cpu", "gpu", "animSprite", "animPlayer")]
+script = ExtResource("1_hxcho")
+cpu = [NodePath("CPUParticles2D")]
+gpu = []
+animSprite = []
+animPlayer = []
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1980563054]
+emitting = false
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 338.89
+initial_velocity_max = 338.89
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+split_scale = true
+scale_curve_x = SubResource("Curve_6tpqv")
+scale_curve_y = SubResource("Curve_0e3de")
+color_ramp = SubResource("Gradient_cqhv2")

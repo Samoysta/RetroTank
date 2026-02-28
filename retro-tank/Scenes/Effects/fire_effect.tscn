@@ -50,7 +50,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Start",
-"speed": 30.0
+"speed": 60.0
 }]
 
 [node name="FireEffect" type="Node2D" unique_id=490733582 node_paths=PackedStringArray("cpu", "gpu", "animSprite", "animPlayer")]

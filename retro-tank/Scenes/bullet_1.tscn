@@ -9,12 +9,18 @@
 script = ExtResource("1_yxq1y")
 shapeCast = NodePath("ShapeCast2D")
 speed = 1400.0
+damage = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1339029636]
 z_index = -1
 scale = Vector2(8.835, 3)
 texture = ExtResource("1_2dt4e")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1482208874]
+rect = Rect2(-54, -18, 104, 33)
+
 [node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=773259153]
 shape = SubResource("CircleShape2D_2dt4e")
 max_results = 2
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="ScreenExited"]

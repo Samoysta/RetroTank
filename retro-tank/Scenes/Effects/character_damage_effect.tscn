@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bq6epk22bxjg4"]
+
+[ext_resource type="Script" uid="uid://dpqtey02w5ow5" path="res://Scripts/Effect.cs" id="1_334jd"]
+
+[node name="CharacterDamageEffect" type="Node2D" unique_id=55884510 node_paths=PackedStringArray("cpu", "gpu", "animSprite", "animPlayer")]
+script = ExtResource("1_334jd")
+cpu = []
+gpu = []
+animSprite = []
+animPlayer = []

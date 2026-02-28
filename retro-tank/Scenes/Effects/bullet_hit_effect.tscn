@@ -55,11 +55,16 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.83990145, 1, 1, 1, 0)
 script = ExtResource("1_s8xay")
 cpu = [NodePath("CPUParticles2D")]
 gpu = []
-animSprite = [NodePath("AnimatedSprite2D")]
+animSprite = [NodePath("AnimatedSprite2D"), NodePath("AnimatedSprite2D2")]
 animPlayer = []
 
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=494109723]
+modulate = Color(18.892157, 0, 0, 1)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_1eusc")
+animation = &"Start"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1231059836]
-modulate = Color(1, 0.48235294, 0, 1)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_1eusc")
 animation = &"Start"

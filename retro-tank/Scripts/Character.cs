@@ -6,17 +6,23 @@ using System.ComponentModel;
 
 public partial class Character : CharacterBody2D
 {
+	[Export] int health;
 	[Export] float Speed;
 	[Export] float speedAccel;
 	[Export] Node2D bulletPos;
+	[Export] AnimationPlayer damageAnim;
 	[Export] PackedScene bullet1;
 	[Export] float bulletCD;
 	[Export] PackedScene hitEffect;
 	[Export] PackedScene fireEffect;
+	[Export] PackedScene damageEffect;
+	[Export] int bulletPerFrame;
+	float damageCD;
 	float bulletcd;
 	public Queue<Bullet1> bullets = new ();
 	public Queue<Effect> bulletHitEffects = new ();
 	public Queue<Effect> fireEffects = new ();
+	public Queue<Effect> damageEffects = new(); 
 	Vector2 velocity;
     public override void _Ready()
     {
@@ -34,12 +40,29 @@ public partial class Character : CharacterBody2D
 			ef.SetOff();
 			fireEffects.Enqueue(ef);
 		}
+		for (int i = 0; i < 3; i++)
+		{
+			Effect ef = (Effect)damageEffect.Instantiate();
+			GetTree().CurrentScene.CallDeferred("add_child", ef);
+			ef.SetOff();
+			damageEffects.Enqueue(ef);
+		}
     }
     public override void _Process(double delta)
     {
+		//Timers
+		if (damageCD > 0)
+		{
+			damageCD -= (float)delta;
+		}
 		if (bulletcd > 0)
 		{
 			bulletcd -= (float)delta;
+		}
+		//Can
+		if (health <= 0)
+		{
+			Die();
 		}
         LookAt(GetGlobalMousePosition());
 		//Ateş etme
@@ -47,7 +70,7 @@ public partial class Character : CharacterBody2D
 		{
 			if (bulletcd <= 0)
 			{
-				for (int i = 0; i < 1; i++)
+				for (int i = -bulletPerFrame + 1; i < bulletPerFrame; i++)
 				{
 					SpawnBullet(i);	
 				}
@@ -65,7 +88,7 @@ public partial class Character : CharacterBody2D
 		velocity = Velocity;
 		Vector2 direction = Input.GetVector("A", "D", "W", "S");
 		velocity = direction * Speed;
-		Velocity = Velocity.Lerp(velocity, speedAccel * (float)delta);
+		Velocity = Velocity.Lerp(velocity, speedAccel);
 		MoveAndSlide();
 	}
 
@@ -77,7 +100,7 @@ public partial class Character : CharacterBody2D
 			bullet.GlobalRotationDegrees = GlobalRotationDegrees + index * 5;
 			bullet.GlobalPosition = bulletPos.GlobalPosition;
 			GetTree().CurrentScene.AddChild(bullet);
-			bullet.Call("Init", this);	
+			bullet.Call("Init", this);
 		}
 		else
 		{
@@ -87,5 +110,24 @@ public partial class Character : CharacterBody2D
 			bullet.SetOn();
 		}
 		
+	}
+
+	public void TakeDamage(int damage)
+	{
+		if (damageCD <= 0)
+		{
+			health -= damage;
+			damageAnim.Play("TakeDamage");
+			damageAnim.Seek(0);
+			damageCD = 1;	
+		}
+	}
+
+	public void Die()
+	{
+		Visible = false;
+		SetProcess(false);
+		SetPhysicsProcess(false);
+		GetTree().Paused = true;
 	}
 }

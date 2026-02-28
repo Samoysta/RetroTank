@@ -5,9 +5,10 @@ public partial class Bullet1 : Node2D
 {
 	[Export] ShapeCast2D shapeCast;
 	[Export] float speed;
-	int damage;
+	[Export] int damage;
 	Character character;
 	Vector2 beforePos;
+	bool SetOffed;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -22,16 +23,24 @@ public partial class Bullet1 : Node2D
 		beforePos = GlobalPosition;
         if (shapeCast.IsColliding())
 		{
-			Node2D body = (Node2D)shapeCast.GetCollider(0);
-			if (!body.IsInGroup("Player"))
+			for (int i = 0; i < shapeCast.GetCollisionCount(); i++)
 			{
-				Vector2 hitPos = shapeCast.GetCollisionPoint(0);
-				if (body.HasMethod("TakeDamage"))
+				Node2D body = (Node2D)shapeCast.GetCollider(i);
+				if (body != null && !body.IsInGroup("Player"))
 				{
-					body.Call("TakeDamage", damage);
+					Vector2 hitPos = shapeCast.GetCollisionPoint(i);
+					if (body.HasMethod("TakeDamage"))
+					{
+						body.Call("TakeDamage", damage);
+						Effect ef = character.damageEffects.Dequeue();
+						ef.GlobalPosition = hitPos;
+						ef.GlobalRotationDegrees = GlobalRotationDegrees;
+						ef.SetOn();
+						character.damageEffects.Enqueue(ef);
+					}
+					SetOff();
+					HitEffect(hitPos);		
 				}
-				SetOff();
-				HitEffect(hitPos);
 			}
 		}
     }
@@ -50,18 +59,28 @@ public partial class Bullet1 : Node2D
 
 	public void SetOff()
 	{
-		Visible = false;
-		SetPhysicsProcess(false);
-		shapeCast.Enabled = false;
-		character.bullets.Enqueue(this);
+		if (!SetOffed)
+		{
+			Visible = false;
+			SetPhysicsProcess(false);
+			shapeCast.Enabled = false;
+			character.bullets.Enqueue(this);
+			SetOffed = true;	
+		}
 	}
 
 	public void SetOn()
 	{
+		SetOffed = false;
 		Visible = true;
 		beforePos = GlobalPosition;
 		SetPhysicsProcess(true);
 		shapeCast.Enabled = true;
+	}
+
+	void ScreenExited()
+	{
+		SetOff();
 	}
 
 }
