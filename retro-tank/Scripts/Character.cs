@@ -17,15 +17,23 @@ public partial class Character : CharacterBody2D
 	[Export] PackedScene fireEffect;
 	[Export] PackedScene damageEffect;
 	[Export] int bulletPerFrame;
+	[Export] Godot.Label hpLabel;
+	[Export] Godot.Label killLabel;
 	float damageCD;
 	float bulletcd;
+	public int killAmount;
 	public Queue<Bullet1> bullets = new ();
 	public Queue<Effect> bulletHitEffects = new ();
 	public Queue<Effect> fireEffects = new ();
 	public Queue<Effect> damageEffects = new(); 
+	Tween tween1;
+	Tween tween2;
 	Vector2 velocity;
+	CollisionShape2D hitBox;
     public override void _Ready()
     {
+		hpLabel.Text = $"{health}";
+		hitBox = GetNode<CollisionShape2D>("CollisionShape2D/HitBox/CollisionShape2D");
 		for (int i = 0; i < 6; i++)
 		{
 			Effect ef = (Effect)hitEffect.Instantiate();
@@ -33,7 +41,7 @@ public partial class Character : CharacterBody2D
 			ef.SetOff();
 			bulletHitEffects.Enqueue(ef);
 		}
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 5; i++)
 		{
 			Effect ef = (Effect)fireEffect.Instantiate();
 			GetTree().CurrentScene.CallDeferred("add_child", ef);
@@ -54,6 +62,10 @@ public partial class Character : CharacterBody2D
 		if (damageCD > 0)
 		{
 			damageCD -= (float)delta;
+		}
+		else
+		{
+			hitBox.CallDeferred("set_disabled", false);
 		}
 		if (bulletcd > 0)
 		{
@@ -120,6 +132,39 @@ public partial class Character : CharacterBody2D
 			damageAnim.Play("TakeDamage");
 			damageAnim.Seek(0);
 			damageCD = 1;	
+			hitBox.CallDeferred("set_disabled", true);
+			hpLabel.Text = $"{health}";
+			hpLabel.Scale /= 4;
+			tween1?.Kill();
+			tween1 = CreateTween();
+			tween1.SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Elastic);
+			tween1.TweenProperty(hpLabel, "scale", hpLabel.Scale * 4, 0.9);
+			tween2?.Kill();
+			tween2 = CreateTween();
+			tween2.SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Linear);
+			tween2.TweenProperty(hpLabel, "modulate", Colors.DarkOrange, 0.1);
+			tween2.TweenProperty(hpLabel, "modulate", Colors.White, 0.45);
+		}
+	}
+
+	public void setKillAmount()
+	{
+		killAmount++;
+		killLabel.Text = $"{killAmount}";
+	}
+	public void BodyEntered(Node2D body)
+	{
+		if (body.IsInGroup("SmallEnemy"))
+		{
+			TakeDamage(1);
+		}
+		else if (body.IsInGroup("MediumEnemy"))
+		{
+			TakeDamage(2);
+		}
+		else if (body.IsInGroup("BigEnemy"))
+		{
+			TakeDamage(3);
 		}
 	}
 

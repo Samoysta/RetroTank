@@ -22,5 +22,6 @@ rect = Rect2(-54, -18, 104, 33)
 [node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=773259153]
 shape = SubResource("CircleShape2D_2dt4e")
 max_results = 2
+collision_mask = 3
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="ScreenExited"]

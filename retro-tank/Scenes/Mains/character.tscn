@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cea5yx7urpsnb" path="res://Scenes/Effects/fire_effect.tscn" id="4_vvjlk"]
 [ext_resource type="PackedScene" uid="uid://bvsl5pv240qca" path="res://Scenes/Effects/hit_effect_small.tscn" id="5_hpxao"]
 [ext_resource type="Script" uid="uid://bk2ftuo4cf80q" path="res://addons/trail_2d/trail_2d.gd" id="6_sre7w"]
+[ext_resource type="Texture2D" uid="uid://cflln2j3k6m0p" path="res://Assets/bullet1.png" id="8_80y8g"]
+[ext_resource type="FontFile" uid="uid://bdndf4mypoqg2" path="res://Assets/yoster.ttf" id="9_h4lc6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cr2aw"]
 radius = 7.0
@@ -18,31 +20,58 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_sre7w"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hpxao"]
+radius = 32.01562
+
 [sub_resource type="Animation" id="Animation_hpxao"]
 length = 0.26666668
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("DamageEffectCPU:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("DamageEffectCPU:emitting")
+tracks/1/path = NodePath("CollisionShape2D/Sprite2D:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DamageEffectCPU2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/BloodUI:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_80y8g"]
@@ -51,26 +80,50 @@ length = 0.8333333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("DamageEffectCPU:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.6666666, 0.8333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.4630682, 0.4630682, 0.4630682, 1), Color(1, 1, 1, 1), Color(0.4630682, 0.4630682, 0.4630682, 1), Color(1, 1, 1, 1), Color(0.4630682, 0.4630682, 0.4630682, 1), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DamageEffectCPU:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.08027972),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D/Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0024197102, 0.16666667, 0.33575305, 0.5, 0.66908634, 0.8333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.1663743, 0.1663743, 0.1663743, 1), Color(1, 1, 1, 1), Color(0.1663743, 0.1663743, 0.1663743, 1), Color(1, 1, 1, 1), Color(0.1663743, 0.1663743, 0.1663743, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DamageEffectCPU2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/BloodUI:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.51),
+"transitions": PackedFloat32Array(0.3077861, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h4lc6"]
@@ -84,13 +137,42 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5211865, 0.5894267), 0.0, 0.0,
 point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_80y8g"]
-offsets = PackedFloat32Array(0, 0.50985223, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.8300493, 1, 1, 1, 0)
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0, 0.46059114, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.101960786, 1, 0.8980392, 1, 1, 1, 0)
 
-[node name="Character" type="CharacterBody2D" unique_id=671721879 node_paths=PackedStringArray("bulletPos", "damageAnim") groups=["Player"]]
+[sub_resource type="LabelSettings" id="LabelSettings_mrhb6"]
+font = ExtResource("9_h4lc6")
+font_size = 102
+outline_size = 33
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_11l3c"]
+font = ExtResource("9_h4lc6")
+font_size = 102
+outline_size = 33
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_h4lc6"]
+font = ExtResource("9_h4lc6")
+font_size = 102
+outline_size = 33
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_hb2xm"]
+offsets = PackedFloat32Array(0.87740386, 1)
+colors = PackedColorArray(0.28627452, 0.28627452, 0.28627452, 0, 0.99965376, 0.058541782, 0.094003625, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h4lc6"]
+gradient = SubResource("Gradient_hb2xm")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Character" type="CharacterBody2D" unique_id=671721879 node_paths=PackedStringArray("bulletPos", "damageAnim", "hpLabel", "killLabel") groups=["Player"]]
 slide_on_ceiling = false
 platform_on_leave = 2
 script = ExtResource("1_ushfy")
+health = 5
 Speed = 700.0
 speedAccel = 0.1
 bulletPos = NodePath("CollisionShape2D/BulletPos")
@@ -101,6 +183,8 @@ hitEffect = ExtResource("3_njf2r")
 fireEffect = ExtResource("4_vvjlk")
 damageEffect = ExtResource("5_hpxao")
 bulletPerFrame = 1
+hpLabel = NodePath("UI/HP title/HP")
+killLabel = NodePath("UI/KillAmount")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=82068161]
 scale = Vector2(3, 3)
@@ -139,12 +223,21 @@ script = ExtResource("6_sre7w")
 length = 20
 metadata/_custom_type_script = "uid://bk2ftuo4cf80q"
 
+[node name="HitBox" type="Area2D" parent="CollisionShape2D" unique_id=742775654]
+scale = Vector2(0.33333334, 0.33333334)
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/HitBox" unique_id=724899072]
+shape = SubResource("CircleShape2D_hpxao")
+
 [node name="DamageEffect" type="AnimationPlayer" parent="." unique_id=665266252]
 libraries/ = SubResource("AnimationLibrary_h4lc6")
 
 [node name="DamageEffectCPU" type="CPUParticles2D" parent="." unique_id=1549321963]
 emitting = false
 texture = ExtResource("1_lkv7d")
+lifetime = 0.9
 one_shot = true
 explosiveness = 1.0
 spread = 180.0
@@ -157,3 +250,63 @@ linear_accel_min = -400.0
 linear_accel_max = -400.0
 scale_amount_curve = SubResource("Curve_hpxao")
 color_ramp = SubResource("Gradient_80y8g")
+
+[node name="DamageEffectCPU2" type="CPUParticles2D" parent="." unique_id=1126120341]
+emitting = false
+texture = ExtResource("8_80y8g")
+lifetime = 0.9
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+linear_accel_min = -400.0
+linear_accel_max = -400.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_hpxao")
+color_ramp = SubResource("Gradient_80y8g")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1178557436]
+
+[node name="HP title" type="Label" parent="UI" unique_id=1053466947]
+offset_left = 21.0
+offset_top = 30.0
+offset_right = 267.0
+offset_bottom = 132.0
+scale = Vector2(0.75, 0.75)
+text = "HP : "
+label_settings = SubResource("LabelSettings_mrhb6")
+
+[node name="HP" type="Label" parent="UI/HP title" unique_id=1706066872]
+layout_mode = 0
+offset_left = 246.66669
+offset_right = 314.6667
+offset_bottom = 102.0
+pivot_offset = Vector2(37.666687, 48)
+text = "5"
+label_settings = SubResource("LabelSettings_11l3c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KillAmount" type="Label" parent="UI" unique_id=1227465883]
+offset_left = 10.0
+offset_top = 35.0
+offset_right = 2684.648
+offset_bottom = 137.0
+scale = Vector2(0.71, 0.71)
+text = "Kill them"
+label_settings = SubResource("LabelSettings_h4lc6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BloodUI" type="Sprite2D" parent="UI" unique_id=590131235]
+modulate = Color(1, 1, 1, 0)
+z_index = -100
+position = Vector2(960.4999, 540.5)
+scale = Vector2(30.015625, 16.921877)
+texture = SubResource("GradientTexture2D_h4lc6")
+
+[connection signal="body_entered" from="CollisionShape2D/HitBox" to="." method="BodyEntered"]

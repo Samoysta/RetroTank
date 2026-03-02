@@ -63,7 +63,7 @@ public partial class Bullet1 : Node2D
 		{
 			Visible = false;
 			SetPhysicsProcess(false);
-			shapeCast.Enabled = false;
+			shapeCast.CallDeferred("set_enabled", false);
 			character.bullets.Enqueue(this);
 			SetOffed = true;	
 		}
@@ -75,7 +75,7 @@ public partial class Bullet1 : Node2D
 		Visible = true;
 		beforePos = GlobalPosition;
 		SetPhysicsProcess(true);
-		shapeCast.Enabled = true;
+		shapeCast.CallDeferred("set_enabled", true);
 	}
 
 	void ScreenExited()

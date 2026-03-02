@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bw376tmeustu2"]
+
+[ext_resource type="Script" uid="uid://bfil204tuymux" path="res://Scripts/Enemys/Manager/EnemyManager.cs" id="1_ld3fo"]
+[ext_resource type="PackedScene" uid="uid://duxflro3cm2fw" path="res://Scenes/Enemys/enemy_1.tscn" id="2_kqq1u"]
+
+[node name="EnemyManager" type="Node2D" unique_id=316115104 node_paths=PackedStringArray("spawnPositions", "trash")]
+script = ExtResource("1_ld3fo")
+maxEnemy = 250
+enemySpawnCD = 0.5
+spawnPositions = [NodePath("SpawnPos/1"), NodePath("SpawnPos/2"), NodePath("SpawnPos/3"), NodePath("SpawnPos/4")]
+trash = NodePath("TrashPos")
+enemy1 = ExtResource("2_kqq1u")
+
+[node name="TrashPos" type="Node2D" parent="." unique_id=1390665546]
+position = Vector2(34122, 0)
+
+[node name="SpawnPos" type="Node2D" parent="." unique_id=2082603712]
+
+[node name="1" type="Node2D" parent="SpawnPos" unique_id=1020611658]
+position = Vector2(-1185, -740)
+
+[node name="2" type="Node2D" parent="SpawnPos" unique_id=364184102]
+position = Vector2(1132, -720)
+
+[node name="3" type="Node2D" parent="SpawnPos" unique_id=1143896892]
+position = Vector2(-1149, 780)
+
+[node name="4" type="Node2D" parent="SpawnPos" unique_id=2126208362]
+position = Vector2(1217, 748)

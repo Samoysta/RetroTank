@@ -2,78 +2,127 @@
 
 [ext_resource type="PackedScene" uid="uid://bd1yxwsnanycd" path="res://Scenes/Mains/character.tscn" id="1_3dogw"]
 [ext_resource type="PackedScene" uid="uid://chfh8dj8skfh2" path="res://Scenes/Mains/camera_2d.tscn" id="1_r5l72"]
-[ext_resource type="PackedScene" uid="uid://duxflro3cm2fw" path="res://Scenes/Enemys/enemy_1.tscn" id="3_50ct6"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5l72"]
-size = Vector2(63, 64)
+[ext_resource type="PackedScene" uid="uid://bw376tmeustu2" path="res://Scenes/enemy_manager.tscn" id="2_50ct6"]
+[ext_resource type="Script" uid="uid://b4mwy0yoq80p8" path="res://Scripts/GameManager.cs" id="4_hb2xm"]
 
 [sub_resource type="Gradient" id="Gradient_50ct6"]
+colors = PackedColorArray(0, 0, 0, 1, 0.3647059, 0.54509807, 0.6509804, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ak5v8"]
+gradient = SubResource("Gradient_50ct6")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_ak5v8"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rdbpf"]
+gradient = SubResource("Gradient_ak5v8")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50ct6"]
+size = Vector2(4282, 58)
+
+[sub_resource type="Gradient" id="Gradient_hb2xm"]
 offsets = PackedFloat32Array(1)
 colors = PackedColorArray(1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_hb2xm"]
-gradient = SubResource("Gradient_50ct6")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x033f"]
+gradient = SubResource("Gradient_hb2xm")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hb2xm"]
+size = Vector2(732, 3170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ak5v8"]
+size = Vector2(4328, 486.0725)
 
 [node name="TestScene" type="Node2D" unique_id=634171783]
 
 [node name="Camera2D" parent="." unique_id=633558077 node_paths=PackedStringArray("target") instance=ExtResource("1_r5l72")]
 target = NodePath("../Character")
 
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D" unique_id=1309514974]
+visible = false
+z_index = -100
+position = Vector2(4.9999905, 3.0517578e-05)
+scale = Vector2(30.84375, 17.843752)
+texture = SubResource("GradientTexture2D_ak5v8")
+
+[node name="EnemyManager" parent="Camera2D" unique_id=316115104 instance=ExtResource("2_50ct6")]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D" unique_id=2058294337]
+modulate = Color(0.07762889, 0.0776288, 0.07762881, 1)
+z_index = -100
+position = Vector2(9.000061, 30.5)
+scale = Vector2(32.15625, 18.734375)
+texture = SubResource("GradientTexture2D_rdbpf")
+
 [node name="Character" parent="." unique_id=671721879 instance=ExtResource("1_3dogw")]
-health = 5
+bulletCD = 0.0
+bulletPerFrame = 4
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=454447829]
-collision_mask = 0
+[node name="GameManager" type="Node2D" parent="." unique_id=34697839 node_paths=PackedStringArray("managerEnemy")]
+script = ExtResource("4_hb2xm")
+managerEnemy = NodePath("../Camera2D/EnemyManager")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=280144503]
-position = Vector2(-989, 0)
-scale = Vector2(0.44, 18.585)
-shape = SubResource("RectangleShape2D_r5l72")
+[node name="StaticBody2D" type="StaticBody2D" parent="GameManager" unique_id=1600550698]
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D" unique_id=605366695]
-position = Vector2(0.5, 0)
-texture = SubResource("GradientTexture2D_hb2xm")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameManager/StaticBody2D" unique_id=1934864855]
+position = Vector2(7, 1021)
+shape = SubResource("RectangleShape2D_50ct6")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=763348591]
-position = Vector2(972, 3)
-scale = Vector2(0.44, 18.585)
-shape = SubResource("RectangleShape2D_r5l72")
+[node name="Sprite2D" type="Sprite2D" parent="GameManager/StaticBody2D/CollisionShape2D" unique_id=271614763]
+position = Vector2(1, 1)
+scale = Vector2(67.03125, 1)
+texture = SubResource("GradientTexture2D_x033f")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D2" unique_id=1283573644]
-position = Vector2(0.5, 0)
-texture = SubResource("GradientTexture2D_hb2xm")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GameManager/StaticBody2D" unique_id=120707447]
+position = Vector2(14, -1063)
+shape = SubResource("RectangleShape2D_50ct6")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1435708116]
-position = Vector2(-3, 585)
+[node name="Sprite2D" type="Sprite2D" parent="GameManager/StaticBody2D/CollisionShape2D2" unique_id=434629323]
+position = Vector2(1, 1)
+scale = Vector2(67.03125, 1)
+texture = SubResource("GradientTexture2D_x033f")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="GameManager/StaticBody2D" unique_id=1062611767]
+position = Vector2(2146, 5)
 rotation = 1.5707964
-scale = Vector2(0.395, 30.775)
-shape = SubResource("RectangleShape2D_r5l72")
+scale = Vector2(0.49, 1)
+shape = SubResource("RectangleShape2D_50ct6")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D3" unique_id=1885660692]
-position = Vector2(0.5, 0)
-texture = SubResource("GradientTexture2D_hb2xm")
+[node name="Sprite2D" type="Sprite2D" parent="GameManager/StaticBody2D/CollisionShape2D3" unique_id=918054418]
+position = Vector2(1, 1)
+scale = Vector2(67.03125, 1)
+texture = SubResource("GradientTexture2D_x033f")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1455087439]
-position = Vector2(-20, -565)
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="GameManager/StaticBody2D" unique_id=1353082820]
+position = Vector2(-2102, 5)
 rotation = 1.5707964
-scale = Vector2(0.395, 30.775)
-shape = SubResource("RectangleShape2D_r5l72")
+scale = Vector2(0.49, 1)
+shape = SubResource("RectangleShape2D_50ct6")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D4" unique_id=185661645]
-position = Vector2(0.5, 0)
-texture = SubResource("GradientTexture2D_hb2xm")
+[node name="Sprite2D" type="Sprite2D" parent="GameManager/StaticBody2D/CollisionShape2D4" unique_id=1317187345]
+position = Vector2(1, 1)
+scale = Vector2(67.03125, 1)
+texture = SubResource("GradientTexture2D_x033f")
 
-[node name="Enemy1" parent="." unique_id=240781301 node_paths=PackedStringArray("target") instance=ExtResource("3_50ct6")]
-position = Vector2(188, 55)
-motion_mode = 1
-target = NodePath("../Character")
+[node name="DeadZone" type="Area2D" parent="GameManager/StaticBody2D" unique_id=1348940518]
+collision_mask = 15
 
-[node name="Enemy2" parent="." unique_id=2045294877 node_paths=PackedStringArray("target") instance=ExtResource("3_50ct6")]
-position = Vector2(340, -58)
-motion_mode = 1
-target = NodePath("../Character")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameManager/StaticBody2D/DeadZone" unique_id=2109238896]
+position = Vector2(-2501, 122)
+shape = SubResource("RectangleShape2D_hb2xm")
 
-[node name="Enemy3" parent="." unique_id=1589110324 node_paths=PackedStringArray("target") instance=ExtResource("3_50ct6")]
-position = Vector2(61, 131)
-motion_mode = 1
-target = NodePath("../Character")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GameManager/StaticBody2D/DeadZone" unique_id=907303018]
+position = Vector2(2543, 46)
+shape = SubResource("RectangleShape2D_hb2xm")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="GameManager/StaticBody2D/DeadZone" unique_id=1757755714]
+position = Vector2(-2, -1342.0363)
+shape = SubResource("RectangleShape2D_ak5v8")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="GameManager/StaticBody2D/DeadZone" unique_id=749650843]
+position = Vector2(-2, 1279.9999)
+shape = SubResource("RectangleShape2D_ak5v8")
+
+[connection signal="body_entered" from="GameManager/StaticBody2D/DeadZone" to="GameManager" method="BodyEntered"]

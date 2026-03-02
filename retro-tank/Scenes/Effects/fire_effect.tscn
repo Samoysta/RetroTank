@@ -61,9 +61,11 @@ animSprite = [NodePath("AnimatedSprite2D")]
 animPlayer = []
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1597603617]
+z_index = 3
 position = Vector2(39, 2)
 rotation = 1.5707964
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_p7xw4")
 animation = &"Start"
 frame = 5
+frame_progress = 1.0

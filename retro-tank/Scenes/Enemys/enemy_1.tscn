@@ -22,10 +22,10 @@ tracks/0/path = NodePath(".:material:shader_parameter/flash_amount")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.06666667, 0.071374156),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [1.0, 0.0]
+"values": [1.0, 1.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_3fypd"]
@@ -49,17 +49,18 @@ _data = {
 &"RESET": SubResource("Animation_3fypd")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sr6cv"]
-radius = 35.0
-
-[node name="Enemy1" type="CharacterBody2D" unique_id=240781301 node_paths=PackedStringArray("anim")]
+[node name="Enemy1" type="CharacterBody2D" unique_id=240781301 node_paths=PackedStringArray("hitBox", "anim") groups=["SmallEnemy"]]
 z_index = -1
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
 slide_on_ceiling = false
 platform_on_leave = 2
 script = ExtResource("1_hii2x")
 health = 5
-speed = 300.0
+speed = 500.0
 updateTimer = 0.1
+hitBox = NodePath("CollisionShape2D")
 anim = NodePath("CollisionShape2D/Sprite2D/AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=666846892]
@@ -74,8 +75,3 @@ texture = ExtResource("3_sr6cv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CollisionShape2D/Sprite2D" unique_id=1601936504]
 libraries/ = SubResource("AnimationLibrary_rojin")
-
-[node name="Area2D" type="Area2D" parent="." unique_id=735917724]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=149259245]
-shape = SubResource("CircleShape2D_sr6cv")
