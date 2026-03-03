@@ -1,9 +1,12 @@
-res://Scripts/GameManager.cs
+res://Scenes/test_scene.tscn
+res://Scenes/Enemys/TakeDamage/damage.gdshader
 res://Scripts/Enemys/Enemy1.cs
+res://Scripts/Enemys/Laser.cs
+res://Scripts/GameManager.cs
 res://Scripts/Enemys/Manager/EnemyManager.cs
 res://Scripts/Camera2d.cs
 res://Scripts/Effect.cs
 res://Scripts/Bullet1.cs
 res://Scripts/Character.cs
-res://Scenes/test_scene.tscn
-res://Scenes/Enemys/TakeDamage/damage.gdshader
+res://Scenes/Enemys/enemy_1.tscn
+res://Scenes/Mains/character.tscn

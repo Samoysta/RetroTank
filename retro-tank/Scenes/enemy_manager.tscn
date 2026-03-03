@@ -6,8 +6,7 @@
 [node name="EnemyManager" type="Node2D" unique_id=316115104 node_paths=PackedStringArray("spawnPositions", "trash")]
 script = ExtResource("1_ld3fo")
 maxEnemy = 250
-enemySpawnCD = 0.5
-spawnPositions = [NodePath("SpawnPos/1"), NodePath("SpawnPos/2"), NodePath("SpawnPos/3"), NodePath("SpawnPos/4")]
+spawnPositions = [NodePath("SpawnPos/1"), NodePath("SpawnPos/2"), NodePath("SpawnPos/3"), NodePath("SpawnPos/4"), NodePath("SpawnPos/5"), NodePath("SpawnPos/6"), NodePath("SpawnPos/7"), NodePath("SpawnPos/8")]
 trash = NodePath("TrashPos")
 enemy1 = ExtResource("2_kqq1u")
 
@@ -27,3 +26,15 @@ position = Vector2(-1149, 780)
 
 [node name="4" type="Node2D" parent="SpawnPos" unique_id=2126208362]
 position = Vector2(1217, 748)
+
+[node name="5" type="Node2D" parent="SpawnPos" unique_id=1472018160]
+position = Vector2(1184, 0)
+
+[node name="6" type="Node2D" parent="SpawnPos" unique_id=1302118451]
+position = Vector2(-1160, 0)
+
+[node name="7" type="Node2D" parent="SpawnPos" unique_id=188103762]
+position = Vector2(0, -729)
+
+[node name="8" type="Node2D" parent="SpawnPos" unique_id=1724339406]
+position = Vector2(20, 832)

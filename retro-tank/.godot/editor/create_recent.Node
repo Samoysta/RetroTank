@@ -1,14 +1,14 @@
-CPUParticles2D
 Sprite2D
-Node2D
+AnimationPlayer
 CollisionShape2D
 Area2D
+Node2D
+CPUParticles2D
 StaticBody2D
 Tree
 Trail2D
 PointLight2D
 Label
 CanvasLayer
-AnimationPlayer
 CharacterBody2D
 WorldEnvironment

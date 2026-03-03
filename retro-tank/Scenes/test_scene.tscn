@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://chfh8dj8skfh2" path="res://Scenes/Mains/camera_2d.tscn" id="1_r5l72"]
 [ext_resource type="PackedScene" uid="uid://bw376tmeustu2" path="res://Scenes/enemy_manager.tscn" id="2_50ct6"]
 [ext_resource type="Script" uid="uid://b4mwy0yoq80p8" path="res://Scripts/GameManager.cs" id="4_hb2xm"]
+[ext_resource type="PackedScene" uid="uid://ce4varmwf0raa" path="res://Scenes/Enemys/laser.tscn" id="5_ak5v8"]
 
 [sub_resource type="Gradient" id="Gradient_50ct6"]
 colors = PackedColorArray(0, 0, 0, 1, 0.3647059, 0.54509807, 0.6509804, 1)
@@ -29,11 +30,17 @@ colors = PackedColorArray(1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_x033f"]
 gradient = SubResource("Gradient_hb2xm")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x033f"]
+size = Vector2(1813, 4708)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hb2xm"]
-size = Vector2(732, 3170)
+size = Vector2(1822, 8600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdbpf"]
+size = Vector2(9847, 2282)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ak5v8"]
-size = Vector2(4328, 486.0725)
+size = Vector2(9766, 1536.0182)
 
 [node name="TestScene" type="Node2D" unique_id=634171783]
 
@@ -47,7 +54,11 @@ position = Vector2(4.9999905, 3.0517578e-05)
 scale = Vector2(30.84375, 17.843752)
 texture = SubResource("GradientTexture2D_ak5v8")
 
-[node name="EnemyManager" parent="Camera2D" unique_id=316115104 instance=ExtResource("2_50ct6")]
+[node name="EnemyManager" parent="Camera2D" unique_id=316115104 node_paths=PackedStringArray("player") instance=ExtResource("2_50ct6")]
+maxEnemy = 400
+enemySpawnCD = 1.0
+player = NodePath("../../Character")
+Laser1 = ExtResource("5_ak5v8")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Camera2D" unique_id=2058294337]
 modulate = Color(0.07762889, 0.0776288, 0.07762881, 1)
@@ -57,8 +68,7 @@ scale = Vector2(32.15625, 18.734375)
 texture = SubResource("GradientTexture2D_rdbpf")
 
 [node name="Character" parent="." unique_id=671721879 instance=ExtResource("1_3dogw")]
-bulletCD = 0.0
-bulletPerFrame = 4
+health = 500
 
 [node name="GameManager" type="Node2D" parent="." unique_id=34697839 node_paths=PackedStringArray("managerEnemy")]
 script = ExtResource("4_hb2xm")
@@ -67,7 +77,8 @@ managerEnemy = NodePath("../Camera2D/EnemyManager")
 [node name="StaticBody2D" type="StaticBody2D" parent="GameManager" unique_id=1600550698]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameManager/StaticBody2D" unique_id=1934864855]
-position = Vector2(7, 1021)
+position = Vector2(4.66, 2187)
+scale = Vector2(1.87, 1)
 shape = SubResource("RectangleShape2D_50ct6")
 
 [node name="Sprite2D" type="Sprite2D" parent="GameManager/StaticBody2D/CollisionShape2D" unique_id=271614763]
@@ -76,7 +87,8 @@ scale = Vector2(67.03125, 1)
 texture = SubResource("GradientTexture2D_x033f")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="GameManager/StaticBody2D" unique_id=120707447]
-position = Vector2(14, -1063)
+position = Vector2(14, -2199)
+scale = Vector2(1.8800008, 1)
 shape = SubResource("RectangleShape2D_50ct6")
 
 [node name="Sprite2D" type="Sprite2D" parent="GameManager/StaticBody2D/CollisionShape2D2" unique_id=434629323]
@@ -85,9 +97,9 @@ scale = Vector2(67.03125, 1)
 texture = SubResource("GradientTexture2D_x033f")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="GameManager/StaticBody2D" unique_id=1062611767]
-position = Vector2(2146, 5)
+position = Vector2(4050, 5)
 rotation = 1.5707964
-scale = Vector2(0.49, 1)
+scale = Vector2(1.04, 1)
 shape = SubResource("RectangleShape2D_50ct6")
 
 [node name="Sprite2D" type="Sprite2D" parent="GameManager/StaticBody2D/CollisionShape2D3" unique_id=918054418]
@@ -96,9 +108,9 @@ scale = Vector2(67.03125, 1)
 texture = SubResource("GradientTexture2D_x033f")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="GameManager/StaticBody2D" unique_id=1353082820]
-position = Vector2(-2102, 5)
+position = Vector2(-3975, 0)
 rotation = 1.5707964
-scale = Vector2(0.49, 1)
+scale = Vector2(1.025, 1)
 shape = SubResource("RectangleShape2D_50ct6")
 
 [node name="Sprite2D" type="Sprite2D" parent="GameManager/StaticBody2D/CollisionShape2D4" unique_id=1317187345]
@@ -110,19 +122,19 @@ texture = SubResource("GradientTexture2D_x033f")
 collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameManager/StaticBody2D/DeadZone" unique_id=2109238896]
-position = Vector2(-2501, 122)
-shape = SubResource("RectangleShape2D_hb2xm")
+position = Vector2(-4881, 109)
+shape = SubResource("RectangleShape2D_x033f")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="GameManager/StaticBody2D/DeadZone" unique_id=907303018]
-position = Vector2(2543, 46)
+position = Vector2(5009, -206)
 shape = SubResource("RectangleShape2D_hb2xm")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="GameManager/StaticBody2D/DeadZone" unique_id=1757755714]
-position = Vector2(-2, -1342.0363)
-shape = SubResource("RectangleShape2D_ak5v8")
+position = Vector2(-829.5, -3349)
+shape = SubResource("RectangleShape2D_rdbpf")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="GameManager/StaticBody2D/DeadZone" unique_id=749650843]
-position = Vector2(-2, 1279.9999)
+position = Vector2(-795, 2988.009)
 shape = SubResource("RectangleShape2D_ak5v8")
 
 [connection signal="body_entered" from="GameManager/StaticBody2D/DeadZone" to="GameManager" method="BodyEntered"]

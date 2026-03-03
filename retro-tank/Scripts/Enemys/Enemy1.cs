@@ -12,11 +12,17 @@ public partial class Enemy1 : CharacterBody2D
 	[Export] CollisionShape2D hitBox;
 	[Export] AnimationPlayer anim;
 	EnemyManager manager;
+	RandomNumberGenerator rnd = new();
 	float updateT = 0.5f;
+	float updateT2 = 1f;
 	bool SetOffed;
 	Vector2 velocity;
+	Vector2 distance;
+	int rotation;
+	Vector2 targetPos;
     public override void _Ready()
     {
+		rnd.Randomize();
         updateT = updateTimer;
 		if (target == null)
 		{
@@ -25,10 +31,28 @@ public partial class Enemy1 : CharacterBody2D
     }
     public override void _Process(double delta)
     {
+		if (updateT2 > 0)
+		{
+			updateT2 -= (float)delta;
+		}
+		else
+		{
+			if (target.GlobalPosition.DistanceTo(this.GlobalPosition) < 200)
+			{
+				distance = Vector2.Zero;
+			}
+			else
+			{
+				distance = new Vector2(rnd.RandiRange(0,200),0);
+				rotation = rnd.RandiRange(0,359);
+				updateT2 = 1;	
+			}
+		}
         if (health <= 0)
 		{
 			SetOff();
 		}
+		targetPos = target.GlobalPosition + distance.Rotated(Mathf.DegToRad(rotation));
     }
 
 	public void SetOff()
@@ -71,12 +95,9 @@ public partial class Enemy1 : CharacterBody2D
 		}
 		if (updateT <= 0)
 		{
-			if (target.IsInsideTree())
-			{
-				Vector2 dir = (target.GlobalPosition - GlobalPosition).Normalized();
-				velocity = dir * speed;
-				updateT = updateTimer;	
-			}
+			Vector2 dir = (targetPos - GlobalPosition).Normalized();
+			velocity = dir * speed;
+			updateT = updateTimer;	
 		}
 		LookAt(GlobalPosition + Velocity);
 		Velocity = Velocity.Lerp(velocity, 0.1f);
