@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RetroTank")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bcfdec5b48ea0414414bdb194ff44eaf985a6f7c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+266163cac0c9338fb4fb2b668986624e71c226db")]
 [assembly: System.Reflection.AssemblyProductAttribute("RetroTank")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RetroTank")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dgmm3d113luo7"]
+
+[ext_resource type="Script" uid="uid://naogaeoot7sd" path="res://Scenes/Weapons/DamageArea.cs" id="1_rshdb"]
+[ext_resource type="Texture2D" uid="uid://b60dq0gcwye74" path="res://Assets/Weapons/Weapon1.png" id="1_xn3uw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rshdb"]
+size = Vector2(63.5, 34)
+
+[node name="weapon1sChilds" type="Area2D" unique_id=522930214]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_rshdb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1284962971]
+position = Vector2(238.25, 0)
+shape = SubResource("RectangleShape2D_rshdb")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=2043046132]
+position = Vector2(0.25, 0)
+texture = ExtResource("1_xn3uw")
+flip_h = true
+
+[connection signal="body_entered" from="." to="." method="BodyEntered2D"]

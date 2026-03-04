@@ -106,6 +106,12 @@ public partial class Enemy1 : CharacterBody2D
 
 	public void TakeDamage(int damage)
 	{
+		Character character = (Character)target;
+		Effect ef = character.damageEffects.Dequeue();
+		ef.GlobalPosition = GlobalPosition;
+		ef.GlobalRotationDegrees = GlobalRotationDegrees;
+		ef.SetOn();
+		character.damageEffects.Enqueue(ef);
 		health -= damage;
 		anim.Play("Hit");
 		anim.Seek(0);

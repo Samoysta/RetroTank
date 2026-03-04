@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://djrjq03rum2dn"]
+
+[ext_resource type="Script" uid="uid://c8vvnpuysmhi5" path="res://Scripts/Weapons/Weapon1.cs" id="1_eyejd"]
+[ext_resource type="Texture2D" uid="uid://bxqornsy2su06" path="res://Assets/Weapons/weapon1icon.png" id="1_xypdt"]
+[ext_resource type="PackedScene" uid="uid://dgmm3d113luo7" path="res://Scenes/Weapons/weapon_1s_childs.tscn" id="2_dhu0s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xypdt"]
+radius = 22.203604
+
+[node name="weapon1" type="Area2D" unique_id=1463286860]
+collision_layer = 0
+script = ExtResource("1_eyejd")
+childWeapon = ExtResource("2_dhu0s")
+WeaponAmount = 10
+speed = 150.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=531791415]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_xypdt")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=703562]
+position = Vector2(0, -1)
+scale = Vector2(1.39, 1.39)
+texture = ExtResource("1_xypdt")
+
+[connection signal="body_entered" from="." to="." method="BodyEntered2D"]

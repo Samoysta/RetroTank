@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bw376tmeustu2" path="res://Scenes/enemy_manager.tscn" id="2_50ct6"]
 [ext_resource type="Script" uid="uid://b4mwy0yoq80p8" path="res://Scripts/GameManager.cs" id="4_hb2xm"]
 [ext_resource type="PackedScene" uid="uid://ce4varmwf0raa" path="res://Scenes/Enemys/laser.tscn" id="5_ak5v8"]
+[ext_resource type="PackedScene" uid="uid://djrjq03rum2dn" path="res://Scenes/Weapons/weapon_1.tscn" id="6_x033f"]
 
 [sub_resource type="Gradient" id="Gradient_50ct6"]
 colors = PackedColorArray(0, 0, 0, 1, 0.3647059, 0.54509807, 0.6509804, 1)
@@ -68,7 +69,6 @@ scale = Vector2(32.15625, 18.734375)
 texture = SubResource("GradientTexture2D_rdbpf")
 
 [node name="Character" parent="." unique_id=671721879 instance=ExtResource("1_3dogw")]
-health = 500
 
 [node name="GameManager" type="Node2D" parent="." unique_id=34697839 node_paths=PackedStringArray("managerEnemy")]
 script = ExtResource("4_hb2xm")
@@ -136,5 +136,8 @@ shape = SubResource("RectangleShape2D_rdbpf")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="GameManager/StaticBody2D/DeadZone" unique_id=749650843]
 position = Vector2(-795, 2988.009)
 shape = SubResource("RectangleShape2D_ak5v8")
+
+[node name="weapon1" parent="." unique_id=1463286860 instance=ExtResource("6_x033f")]
+position = Vector2(620, -46)
 
 [connection signal="body_entered" from="GameManager/StaticBody2D/DeadZone" to="GameManager" method="BodyEntered"]
