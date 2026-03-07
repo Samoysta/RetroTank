@@ -20,7 +20,7 @@ public partial class Weapon1 : Area2D
 		{
 			Node2D child = (Node2D)childWeapon.Instantiate();
 			child.Position = Vector2.Zero;
-			child.RotationDegrees = 360 / WeaponAmount * i;
+			child.RotationDegrees = 360f / WeaponAmount * i;
 			AddChild(child);
 			childWeapons[i] = child;
 		}

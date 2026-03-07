@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://df143eh002vdg"]
+
+[ext_resource type="Script" uid="uid://dbr4p6aiti2xo" path="res://Scripts/Menu/WeaponButton.cs" id="1_stc2g"]
+[ext_resource type="FontFile" uid="uid://bdndf4mypoqg2" path="res://Assets/yoster.ttf" id="2_bft3v"]
+
+[node name="Weapon(Menu)" type="Node2D" unique_id=532637515]
+script = ExtResource("1_stc2g")
+
+[node name="Weapon Icon" type="Sprite2D" parent="." unique_id=1217282824]
+position = Vector2(-104, 12)
+scale = Vector2(6, 6)
+
+[node name="Weapon Button" type="Button" parent="." unique_id=460322869]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -15.0
+offset_right = 348.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(168, 30)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_bft3v")
+theme_override_font_sizes/font_size = 48
+text = "Weapon Name"
+
+[connection signal="button_down" from="Weapon Button" to="." method="ButtonDown"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dgmm3d113luo7"]
 
-[ext_resource type="Script" uid="uid://naogaeoot7sd" path="res://Scenes/Weapons/DamageArea.cs" id="1_rshdb"]
+[ext_resource type="Script" uid="uid://naogaeoot7sd" path="res://Scripts/Weapons/DamageArea.cs" id="1_rshdb"]
 [ext_resource type="Texture2D" uid="uid://b60dq0gcwye74" path="res://Assets/Weapons/Weapon1.png" id="1_xn3uw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rshdb"]

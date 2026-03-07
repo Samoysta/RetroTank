@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 public partial class Character : CharacterBody2D
 {
@@ -19,6 +20,7 @@ public partial class Character : CharacterBody2D
 	[Export] int bulletPerFrame;
 	[Export] Godot.Label hpLabel;
 	[Export] Godot.Label killLabel;
+	[Export] WeaponMenu weaponMenu;
 	float damageCD;
 	float bulletcd;
 	public int killAmount;
@@ -30,6 +32,7 @@ public partial class Character : CharacterBody2D
 	Tween tween2;
 	Vector2 velocity;
 	CollisionShape2D hitBox;
+	[Export] int[] killAmountGiftNumbers;
     public override void _Ready()
     {
 		hpLabel.Text = $"{health}";
@@ -48,7 +51,7 @@ public partial class Character : CharacterBody2D
 			ef.SetOff();
 			fireEffects.Enqueue(ef);
 		}
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 50; i++)
 		{
 			Effect ef = (Effect)damageEffect.Instantiate();
 			GetTree().CurrentScene.CallDeferred("add_child", ef);
@@ -150,6 +153,14 @@ public partial class Character : CharacterBody2D
 	public void setKillAmount()
 	{
 		killAmount++;
+		if (killAmountGiftNumbers.Contains(killAmount))
+		{
+			GetTree().Paused = true;
+			weaponMenu.ProcessMode = ProcessModeEnum.Always;
+			weaponMenu.Visible = true;
+			weaponMenu.SetOn();
+
+		}
 		killLabel.Text = $"{killAmount}";
 	}
 	public void BodyEntered(Node2D body)
@@ -171,8 +182,6 @@ public partial class Character : CharacterBody2D
 	public void Die()
 	{
 		Visible = false;
-		SetProcess(false);
-		SetPhysicsProcess(false);
-		GetTree().Paused = true;
+		ProcessMode = ProcessModeEnum.Disabled;
 	}
 }

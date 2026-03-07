@@ -9,6 +9,10 @@
 [ext_resource type="Script" uid="uid://bk2ftuo4cf80q" path="res://addons/trail_2d/trail_2d.gd" id="6_sre7w"]
 [ext_resource type="Texture2D" uid="uid://cflln2j3k6m0p" path="res://Assets/bullet1.png" id="8_80y8g"]
 [ext_resource type="FontFile" uid="uid://bdndf4mypoqg2" path="res://Assets/yoster.ttf" id="9_h4lc6"]
+[ext_resource type="Script" uid="uid://8i27d0vj3s7u" path="res://Scripts/Menu/WeaponMenu.cs" id="10_11l3c"]
+[ext_resource type="PackedScene" uid="uid://df143eh002vdg" path="res://Scenes/Menu/weapon(menu).tscn" id="11_31v6o"]
+[ext_resource type="PackedScene" uid="uid://djrjq03rum2dn" path="res://Scenes/Weapons/weapon_1.tscn" id="12_31v6o"]
+[ext_resource type="Texture2D" uid="uid://dn6qa2g5dkuir" path="res://Assets/Weapons/Weapon 1 icon.png" id="13_anfai"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cr2aw"]
 radius = 7.0
@@ -168,7 +172,33 @@ gradient = SubResource("Gradient_hb2xm")
 fill = 2
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Character" type="CharacterBody2D" unique_id=671721879 node_paths=PackedStringArray("bulletPos", "damageAnim", "hpLabel", "killLabel") groups=["Player"]]
+[sub_resource type="Gradient" id="Gradient_anfai"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.12941177, 0.12941177, 0.12941177, 0.6745098)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yj70g"]
+gradient = SubResource("Gradient_anfai")
+width = 1295
+height = 1063
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_31v6o"]
+font = ExtResource("9_h4lc6")
+font_size = 102
+outline_size = 33
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_yj70g"]
+offsets = PackedFloat32Array(0, 0.52163464, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o6bjx"]
+gradient = SubResource("Gradient_yj70g")
+width = 613
+height = 15
+
+[node name="Character" type="CharacterBody2D" unique_id=671721879 node_paths=PackedStringArray("bulletPos", "damageAnim", "hpLabel", "killLabel", "weaponMenu") groups=["Player"]]
 slide_on_ceiling = false
 platform_on_leave = 2
 script = ExtResource("1_ushfy")
@@ -185,6 +215,7 @@ damageEffect = ExtResource("5_hpxao")
 bulletPerFrame = 1
 hpLabel = NodePath("UI/HP title/HP")
 killLabel = NodePath("UI/KillAmount")
+weaponMenu = NodePath("UI/WeaponMenu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=82068161]
 scale = Vector2(3, 3)
@@ -308,5 +339,39 @@ z_index = -100
 position = Vector2(960.4999, 540.5)
 scale = Vector2(30.015625, 16.921877)
 texture = SubResource("GradientTexture2D_h4lc6")
+
+[node name="WeaponMenu" type="Sprite2D" parent="UI" unique_id=2032607639]
+position = Vector2(960, 540)
+texture = SubResource("GradientTexture2D_yj70g")
+script = ExtResource("10_11l3c")
+weaponMenu = ExtResource("11_31v6o")
+weaponAmount = 2
+darlik = 10.0
+weapons = Array[PackedScene]([ExtResource("12_31v6o")])
+icons = Array[Texture2D]([ExtResource("13_anfai")])
+weaponNames = PackedStringArray("Nails")
+
+[node name="WeaoponsTitle" type="Label" parent="UI/WeaponMenu" unique_id=1401409587]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -889.5
+offset_top = -964.5
+offset_right = -421.5
+offset_bottom = -862.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(233.5, 51.5)
+size_flags_horizontal = 4
+text = "WEAPONS"
+label_settings = SubResource("LabelSettings_31v6o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/WeaponMenu/WeaoponsTitle" unique_id=499042111]
+position = Vector2(232, 122)
+texture = SubResource("GradientTexture2D_o6bjx")
 
 [connection signal="body_entered" from="CollisionShape2D/HitBox" to="." method="BodyEntered"]

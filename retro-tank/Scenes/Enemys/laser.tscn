@@ -12,8 +12,8 @@ gradient = SubResource("Gradient_oldiu")
 size = Vector2(62, 63)
 
 [sub_resource type="Gradient" id="Gradient_ouwev"]
-offsets = PackedFloat32Array(0, 0.5264423, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0.5264423)
+colors = PackedColorArray(1, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_oldiu"]
 gradient = SubResource("Gradient_ouwev")
