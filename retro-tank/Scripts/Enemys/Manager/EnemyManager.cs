@@ -18,7 +18,10 @@ public partial class EnemyManager : Node2D
 	//Enemys
 	[Export] PackedScene enemy1;
 	public Queue<Enemy1> enemy1s = new();
+	[Export] PackedScene enemy2;
+	public Queue<Enemy2> enemy2s = new();
 	int enemyPercent;
+	public List<Node2D> AllEnemys = new();
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -70,10 +73,9 @@ public partial class EnemyManager : Node2D
 			{
 				Enemy1 enem = (Enemy1)enemy1.Instantiate();
 				enem.GlobalPosition = pos;
-				enem.Init(this);
-				enem.SetOff();
-				enem.SetOn();
 				GetTree().CurrentScene.AddChild(enem);
+				enem.Init(this);
+				enem.SetOn();
 			}
 			else
 			{
@@ -103,6 +105,22 @@ public partial class EnemyManager : Node2D
 				enem.CallDeferred("SetOn");
 			}	
 			
+		}
+		else if(enemyPercent == 2)
+		{
+			if (enemy2s.Count <= 0)
+			{
+				Enemy2 enem = (Enemy2)enemy2.Instantiate();
+				enem.GlobalPosition = pos;
+				GetTree().CurrentScene.AddChild(enem);
+				enem.Init(this);
+			}
+			else
+			{
+				Enemy2 enem = enemy2s.Dequeue();
+				enem.GlobalPosition = pos;
+				enem.CallDeferred("SetOn");
+			}	
 		}
 
 		enemyAmount++;

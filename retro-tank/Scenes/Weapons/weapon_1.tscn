@@ -12,11 +12,10 @@ top_level = true
 collision_layer = 0
 script = ExtResource("1_eyejd")
 childWeapon = ExtResource("2_dhu0s")
-WeaponAmount = 70
+WeaponAmount = 5
 speed = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=531791415]
-position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_xypdt")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=703562]

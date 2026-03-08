@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cvwg135na41sn"]
+
+[ext_resource type="Script" uid="uid://datqfm0rhsxnf" path="res://Scripts/Weapons/FireBullet.cs" id="1_s46vb"]
+[ext_resource type="Texture2D" uid="uid://bd8fsw54wev3q" path="res://Assets/Weapons/Weapon 2 icon.png" id="2_ovp3v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vj1jk"]
+size = Vector2(46, 46)
+
+[node name="FireBullet" type="Area2D" unique_id=502109315]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_s46vb")
+speed = 1400.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1985158511]
+shape = SubResource("RectangleShape2D_vj1jk")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=1075836444]
+scale = Vector2(4.6, 4.6)
+texture = ExtResource("2_ovp3v")
+
+[connection signal="body_entered" from="." to="." method="BodyEntered2D"]

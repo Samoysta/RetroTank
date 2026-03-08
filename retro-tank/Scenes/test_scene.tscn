@@ -4,13 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://chfh8dj8skfh2" path="res://Scenes/Mains/camera_2d.tscn" id="1_r5l72"]
 [ext_resource type="PackedScene" uid="uid://bw376tmeustu2" path="res://Scenes/enemy_manager.tscn" id="2_50ct6"]
 [ext_resource type="Script" uid="uid://b4mwy0yoq80p8" path="res://Scripts/GameManager.cs" id="4_hb2xm"]
-[ext_resource type="PackedScene" uid="uid://ce4varmwf0raa" path="res://Scenes/Enemys/laser.tscn" id="5_ak5v8"]
 
 [sub_resource type="Gradient" id="Gradient_50ct6"]
 colors = PackedColorArray(0, 0, 0, 1, 0.3647059, 0.54509807, 0.6509804, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ak5v8"]
 gradient = SubResource("Gradient_50ct6")
+width = 1920
+height = 1080
 fill = 2
 fill_from = Vector2(0.5, 0.5)
 
@@ -51,13 +52,10 @@ target = NodePath("../Character")
 visible = false
 z_index = -100
 position = Vector2(4.9999905, 3.0517578e-05)
-scale = Vector2(30.84375, 17.843752)
 texture = SubResource("GradientTexture2D_ak5v8")
 
 [node name="EnemyManager" parent="Camera2D" unique_id=316115104 node_paths=PackedStringArray("player") instance=ExtResource("2_50ct6")]
-maxEnemy = 300
 player = NodePath("../../Character")
-Laser1 = ExtResource("5_ak5v8")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Camera2D" unique_id=2058294337]
 modulate = Color(0.23529412, 0.16862746, 0.16862746, 1)
@@ -66,10 +64,9 @@ position = Vector2(9.000061, 30.5)
 scale = Vector2(32.15625, 18.734375)
 texture = SubResource("GradientTexture2D_rdbpf")
 
-[node name="Character" parent="." unique_id=671721879 instance=ExtResource("1_3dogw")]
-bulletCD = 0.0
-bulletPerFrame = 3
+[node name="Character" parent="." unique_id=671721879 node_paths=PackedStringArray("manager") instance=ExtResource("1_3dogw")]
 killAmountGiftNumbers = PackedInt32Array(10, 30, 50, 75, 100, 150, 200, 300, 400, 500)
+manager = NodePath("../Camera2D/EnemyManager")
 
 [node name="GameManager" type="Node2D" parent="." unique_id=34697839 node_paths=PackedStringArray("managerEnemy")]
 script = ExtResource("4_hb2xm")

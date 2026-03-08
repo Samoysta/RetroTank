@@ -28,11 +28,16 @@ public partial class Character : CharacterBody2D
 	public Queue<Effect> bulletHitEffects = new ();
 	public Queue<Effect> fireEffects = new ();
 	public Queue<Effect> damageEffects = new(); 
+	public Queue<Coin> coins = new();
 	Tween tween1;
 	Tween tween2;
 	Vector2 velocity;
 	CollisionShape2D hitBox;
 	[Export] int[] killAmountGiftNumbers;
+	[Export] public PackedScene Coin;
+	public int coinAmount;
+	[Export] Label coinLabel;
+	[Export] public EnemyManager manager;
     public override void _Ready()
     {
 		hpLabel.Text = $"{health}";
@@ -61,6 +66,7 @@ public partial class Character : CharacterBody2D
     }
     public override void _Process(double delta)
     {
+		coinLabel.Text = $"Samoys : {coinAmount}";
 		//Timers
 		if (damageCD > 0)
 		{
@@ -103,7 +109,7 @@ public partial class Character : CharacterBody2D
 		velocity = Velocity;
 		Vector2 direction = Input.GetVector("A", "D", "W", "S");
 		velocity = direction * Speed;
-		Velocity = Velocity.Lerp(velocity, speedAccel);
+		Velocity = Velocity.Lerp(velocity, speedAccel * (float)delta);
 		MoveAndSlide();
 	}
 

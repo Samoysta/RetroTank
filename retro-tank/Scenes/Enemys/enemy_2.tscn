@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://wwdqcnyymu02"]
+
+[ext_resource type="Script" uid="uid://db58nrqnv5ngw" path="res://Scripts/Enemys/Enemy2.cs" id="1_bmgfb"]
+[ext_resource type="Shader" uid="uid://cn7kvy3yv5ooi" path="res://Scenes/Enemys/TakeDamage/damage.gdshader" id="2_2hu7x"]
+[ext_resource type="Texture2D" uid="uid://d02o4e7ows27g" path="res://Assets/Enemy2.png" id="3_bmgfb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3nhph"]
+radius = 7.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3fypd"]
+resource_local_to_scene = true
+shader = ExtResource("2_2hu7x")
+shader_parameter/flash_amount = 0.0
+
+[sub_resource type="Animation" id="Animation_sr6cv"]
+resource_name = "Hit"
+length = 0.26666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.071374156),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3fypd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rojin"]
+_data = {
+&"Hit": SubResource("Animation_sr6cv"),
+&"RESET": SubResource("Animation_3fypd")
+}
+
+[node name="Enemy2" type="CharacterBody2D" unique_id=240781301 node_paths=PackedStringArray("hitBox", "anim") groups=["SmallEnemy"]]
+z_index = -1
+collision_layer = 2
+motion_mode = 1
+slide_on_ceiling = false
+platform_on_leave = 2
+script = ExtResource("1_bmgfb")
+health = 7
+speed = 600.0
+updateTimer = 0.1
+hitBox = NodePath("CollisionShape2D")
+anim = NodePath("CollisionShape2D/Sprite2D/AnimationPlayer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=666846892]
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_3nhph")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=2073684309]
+modulate = Color(0.4769104, 0.0001603907, 0.476907, 1)
+material = SubResource("ShaderMaterial_3fypd")
+rotation = 1.5707964
+texture = ExtResource("3_bmgfb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CollisionShape2D/Sprite2D" unique_id=1601936504]
+libraries/ = SubResource("AnimationLibrary_rojin")

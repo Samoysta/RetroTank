@@ -7,7 +7,7 @@ public partial class Enemy1 : CharacterBody2D
 	[Export] int health;
 	[Export] int damage = 1;
 	[Export] float speed;
-	[Export] Node2D target;
+	[Export] Character target;
 	[Export] float updateTimer;
 	[Export] CollisionShape2D hitBox;
 	[Export] AnimationPlayer anim;
@@ -26,7 +26,7 @@ public partial class Enemy1 : CharacterBody2D
         updateT = updateTimer;
 		if (target == null)
 		{
-			target = GetParent().GetNode<CharacterBody2D>("Character");
+			target = GetParent().GetNode<Character>("Character");
 		}
     }
     public override void _Process(double delta)
@@ -63,6 +63,8 @@ public partial class Enemy1 : CharacterBody2D
 			{
 				character.setKillAmount();
 			}
+			SpawnCoin();
+			SpawnCoin();
 			Visible = false;
 			SetProcess(false);
 			hitBox.CallDeferred("set_disabled", true);
@@ -71,16 +73,35 @@ public partial class Enemy1 : CharacterBody2D
 			SetOffed = true;
 			manager.enemyAmount--;
 			manager.Call("SetPos", this);
+			manager.AllEnemys.Remove(this);
 		}
+	}
+	void SpawnCoin()
+	{
+		if (target.coins.Count == 0)
+		{
+			Coin coin = (Coin)target.Coin.Instantiate();
+			coin.GlobalPosition = GlobalPosition;
+			coin.Call("Init", target);
+			GetTree().CurrentScene.AddChild(coin);
+		}
+		else
+		{
+			Coin coin = target.coins.Dequeue();
+			coin.GlobalPosition = GlobalPosition;
+			coin.SetOn();
+		}
+		
 	}
 	public void SetOn()
 	{
-		health = 5;
+		health = 3;
 		Visible = true;
 		SetProcess(true);
 		SetPhysicsProcess(true);
 		SetOffed = false;
 		hitBox.CallDeferred("set_disabled", false);
+		manager.AllEnemys.Add(this);
 	}
 
 	public void Init(EnemyManager who)
@@ -100,7 +121,7 @@ public partial class Enemy1 : CharacterBody2D
 			updateT = updateTimer;	
 		}
 		LookAt(GlobalPosition + Velocity);
-		Velocity = Velocity.Lerp(velocity, 0.1f);
+		Velocity = Velocity.Lerp(velocity, 5 * (float)delta);
 		MoveAndSlide();
 	}
 

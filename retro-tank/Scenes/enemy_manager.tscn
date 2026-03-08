@@ -2,13 +2,18 @@
 
 [ext_resource type="Script" uid="uid://bfil204tuymux" path="res://Scripts/Enemys/Manager/EnemyManager.cs" id="1_ld3fo"]
 [ext_resource type="PackedScene" uid="uid://duxflro3cm2fw" path="res://Scenes/Enemys/enemy_1.tscn" id="2_kqq1u"]
+[ext_resource type="PackedScene" uid="uid://ce4varmwf0raa" path="res://Scenes/Enemys/laser.tscn" id="2_tfjdt"]
+[ext_resource type="PackedScene" uid="uid://wwdqcnyymu02" path="res://Scenes/Enemys/enemy_2.tscn" id="4_tfjdt"]
 
 [node name="EnemyManager" type="Node2D" unique_id=316115104 node_paths=PackedStringArray("spawnPositions", "trash")]
 script = ExtResource("1_ld3fo")
-maxEnemy = 250
+maxEnemy = 300
+enemySpawnCD = 0.7
 spawnPositions = [NodePath("SpawnPos/1"), NodePath("SpawnPos/2"), NodePath("SpawnPos/3"), NodePath("SpawnPos/4"), NodePath("SpawnPos/5"), NodePath("SpawnPos/6"), NodePath("SpawnPos/7"), NodePath("SpawnPos/8")]
 trash = NodePath("TrashPos")
+Laser1 = ExtResource("2_tfjdt")
 enemy1 = ExtResource("2_kqq1u")
+enemy2 = ExtResource("4_tfjdt")
 
 [node name="TrashPos" type="Node2D" parent="." unique_id=1390665546]
 position = Vector2(34122, 0)

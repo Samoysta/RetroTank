@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://y2sq6to8tij"]
+
+[ext_resource type="Texture2D" uid="uid://5icva43dlk5j" path="res://Assets/Coin.png" id="1_2qo34"]
+[ext_resource type="Script" uid="uid://b4swauqs811ns" path="res://Scripts/Coin.cs" id="1_jgi06"]
+
+[node name="Coin" type="Node2D" unique_id=1030059523]
+script = ExtResource("1_jgi06")
+spawnDistance = 150
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=3917868]
+z_index = -2
+scale = Vector2(3, 3)
+texture = ExtResource("1_2qo34")

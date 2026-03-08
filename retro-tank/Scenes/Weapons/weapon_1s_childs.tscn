@@ -8,7 +8,7 @@ size = Vector2(63.5, 34)
 
 [node name="weapon1sChilds" type="Area2D" unique_id=522930214]
 collision_layer = 0
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_rshdb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1284962971]

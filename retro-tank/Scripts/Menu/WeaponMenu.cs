@@ -48,6 +48,7 @@ public partial class WeaponMenu : Node2D
 
 	public void RandomWeapon()
 	{
+		List<int> weaponPercents = new ();
 		for (int i = 0; i < weaponNodes.Length; i++)
 		{
 			if (i >= weapons2D.Count)
@@ -57,6 +58,14 @@ public partial class WeaponMenu : Node2D
             	continue;
         	}
 			int weaponPercent = rnd.RandiRange(0,weapons2D.Count - 1);
+			if (weaponPercents.Contains(weaponPercent))
+			{
+				while (weaponPercents.Contains(weaponPercent))
+				{
+					weaponPercent = rnd.RandiRange(0,weapons2D.Count - 1);
+				}
+			}
+			weaponPercents.Add(weaponPercent);
 			weaponNodes[i].GetNode<Sprite2D>("Control/Weapon Icon").Texture = icons2D[weaponPercent];
 			weaponNodes[i].GetNode<Label>("Control/Weapon Button").Text = Names[weaponPercent];
 		}
