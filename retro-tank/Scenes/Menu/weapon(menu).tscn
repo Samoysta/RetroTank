@@ -3,30 +3,77 @@
 [ext_resource type="Script" uid="uid://dbr4p6aiti2xo" path="res://Scripts/Menu/WeaponButton.cs" id="1_stc2g"]
 [ext_resource type="FontFile" uid="uid://bdndf4mypoqg2" path="res://Assets/yoster.ttf" id="2_bft3v"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_bft3v"]
+font_size = 48
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_aybr6"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_becaa"]
+gradient = SubResource("Gradient_aybr6")
+width = 758
+
+[sub_resource type="Gradient" id="Gradient_bft3v"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aybr6"]
+gradient = SubResource("Gradient_bft3v")
+width = 773
+height = 85
+
 [node name="Weapon(Menu)" type="Node2D" unique_id=532637515]
 script = ExtResource("1_stc2g")
 
-[node name="Weapon Icon" type="Sprite2D" parent="." unique_id=1217282824]
-position = Vector2(-104, 12)
-scale = Vector2(6, 6)
-
-[node name="Weapon Button" type="Button" parent="." unique_id=460322869]
+[node name="Control" type="Control" parent="." unique_id=779640630]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 12.0
-offset_top = -15.0
-offset_right = 348.0
-offset_bottom = 41.0
+offset_left = -390.5
+offset_top = -37.0
+offset_right = 390.5
+offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(168, 30)
+pivot_offset = Vector2(386.5, 39)
+
+[node name="Weapon Button" type="Label" parent="Control" unique_id=912192291]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 13.0
+offset_top = -23.5
+offset_right = 350.0
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-12, 15)
 size_flags_horizontal = 4
-size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_bft3v")
 theme_override_font_sizes/font_size = 48
 text = "Weapon Name"
+label_settings = SubResource("LabelSettings_bft3v")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[connection signal="button_down" from="Weapon Button" to="." method="ButtonDown"]
+[node name="Weapon Icon" type="Sprite2D" parent="Control" unique_id=1217282824]
+position = Vector2(175.5, 37)
+scale = Vector2(6, 6)
+
+[node name="BG" type="Sprite2D" parent="Control" unique_id=122786169]
+z_index = -2
+position = Vector2(390.5, 37)
+texture = SubResource("GradientTexture2D_becaa")
+
+[node name="OUTLINE" type="Sprite2D" parent="Control/BG" unique_id=236958321]
+z_index = -2
+texture = SubResource("GradientTexture2D_aybr6")

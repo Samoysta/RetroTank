@@ -1,7 +1,7 @@
 res://Scenes/Menu/weapon(menu).tscn
 res://Scenes/Enemys/TakeDamage/damage.gdshader
-res://Scenes/test_scene.tscn
 res://Scripts/Menu/WeaponButton.cs
+res://Scripts/Menu/WeaponMenu.cs
 res://Scripts/Enemys/Laser.cs
 res://Scripts/GameManager.cs
 res://Scripts/Enemys/Enemy1.cs
@@ -9,7 +9,9 @@ res://Scripts/Enemys/Manager/EnemyManager.cs
 res://Scripts/Camera2d.cs
 res://Scripts/Weapons/DamageArea.cs
 res://Scripts/Weapons/Weapon1.cs
-res://Scripts/Menu/WeaponMenu.cs
 res://Scripts/Effect.cs
 res://Scripts/Bullet1.cs
 res://Scripts/Character.cs
+res://Scenes/Mains/character.tscn
+res://Scenes/test_scene.tscn
+res://Scenes/Weapons/weapon_1.tscn

@@ -172,17 +172,6 @@ gradient = SubResource("Gradient_hb2xm")
 fill = 2
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="Gradient" id="Gradient_anfai"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.12941177, 0.12941177, 0.12941177, 0.6745098)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_yj70g"]
-gradient = SubResource("Gradient_anfai")
-width = 1295
-height = 1063
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
 [sub_resource type="LabelSettings" id="LabelSettings_31v6o"]
 font = ExtResource("9_h4lc6")
 font_size = 102
@@ -190,13 +179,20 @@ outline_size = 33
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_yj70g"]
-offsets = PackedFloat32Array(0, 0.52163464, 1)
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0)
+offsets = PackedFloat32Array(0.52163464)
+colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_o6bjx"]
 gradient = SubResource("Gradient_yj70g")
 width = 613
-height = 15
+height = 7
+
+[sub_resource type="Gradient" id="Gradient_anfai"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yj70g"]
+gradient = SubResource("Gradient_anfai")
 
 [node name="Character" type="CharacterBody2D" unique_id=671721879 node_paths=PackedStringArray("bulletPos", "damageAnim", "hpLabel", "killLabel", "weaponMenu") groups=["Player"]]
 slide_on_ceiling = false
@@ -323,6 +319,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="KillAmount" type="Label" parent="UI" unique_id=1227465883]
+z_index = -15
 offset_left = 10.0
 offset_top = 35.0
 offset_right = 2684.648
@@ -340,9 +337,8 @@ position = Vector2(960.4999, 540.5)
 scale = Vector2(30.015625, 16.921877)
 texture = SubResource("GradientTexture2D_h4lc6")
 
-[node name="WeaponMenu" type="Sprite2D" parent="UI" unique_id=2032607639]
+[node name="WeaponMenu" type="Node2D" parent="UI" unique_id=496125334]
 position = Vector2(960, 540)
-texture = SubResource("GradientTexture2D_yj70g")
 script = ExtResource("10_11l3c")
 weaponMenu = ExtResource("11_31v6o")
 weaponAmount = 2
@@ -357,10 +353,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -889.5
-offset_top = -964.5
-offset_right = -421.5
-offset_bottom = -862.5
+offset_left = -251.0
+offset_top = -433.0
+offset_right = 217.0
+offset_bottom = -331.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(233.5, 51.5)
@@ -373,5 +369,11 @@ vertical_alignment = 1
 [node name="Sprite2D" type="Sprite2D" parent="UI/WeaponMenu/WeaoponsTitle" unique_id=499042111]
 position = Vector2(232, 122)
 texture = SubResource("GradientTexture2D_o6bjx")
+
+[node name="BG" type="Sprite2D" parent="UI/WeaponMenu" unique_id=619962754]
+modulate = Color(0.2627451, 0.2627451, 0.2627451, 0.44313726)
+z_index = -10
+scale = Vector2(16.91, 16.91)
+texture = SubResource("GradientTexture2D_yj70g")
 
 [connection signal="body_entered" from="CollisionShape2D/HitBox" to="." method="BodyEntered"]

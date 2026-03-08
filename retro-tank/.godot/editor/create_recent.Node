@@ -1,5 +1,6 @@
 Sprite2D
 Node2D
+Control
 Label
 Button
 MenuButton
@@ -11,4 +12,3 @@ AnimationPlayer
 CPUParticles2D
 Tree
 Trail2D
-CanvasLayer

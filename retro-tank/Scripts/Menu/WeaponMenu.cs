@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-public partial class WeaponMenu : Sprite2D
+public partial class WeaponMenu : Node2D
 {
 	[Export] PackedScene weaponMenu;
 	[Export] int weaponAmount;
@@ -53,12 +53,12 @@ public partial class WeaponMenu : Sprite2D
 			if (i >= weapons2D.Count)
         	{
             	weaponNodes[i].Visible = false;
-				weaponNodes[i].GetNode<Button>("Weapon Button").Disabled = true;
+				weaponNodes[i].ProcessMode = ProcessModeEnum.Disabled;
             	continue;
         	}
 			int weaponPercent = rnd.RandiRange(0,weapons2D.Count - 1);
-			weaponNodes[i].GetNode<Sprite2D>("Weapon Icon").Texture = icons2D[weaponPercent];
-			weaponNodes[i].GetNode<Button>("Weapon Button").Text = Names[weaponPercent];
+			weaponNodes[i].GetNode<Sprite2D>("Control/Weapon Icon").Texture = icons2D[weaponPercent];
+			weaponNodes[i].GetNode<Label>("Control/Weapon Button").Text = Names[weaponPercent];
 		}
 
 	}
@@ -82,12 +82,21 @@ public partial class WeaponMenu : Sprite2D
 	}
 	public void SetOn()
 	{
-		selected = false;
-		tween?.Kill();
-		tween = CreateTween();
-		tween.SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
-		tween.TweenProperty(this, "scale", new Vector2(1,1), 0.5f);
-		RandomWeapon();
+		if (weapons2D.Count > 0)
+		{
+			selected = false;
+			tween?.Kill();
+			tween = CreateTween();
+			tween.SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+			tween.TweenProperty(this, "scale", new Vector2(1,1), 0.5f);
+			RandomWeapon();	
+		}
+		else
+		{
+			Visible = false;
+			GetTree().Paused = false;
+			ProcessMode = ProcessModeEnum.Disabled;
+		}
 	}
 
 	public void SetOff()

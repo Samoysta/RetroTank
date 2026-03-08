@@ -4,15 +4,18 @@ using System.Collections;
 
 public partial class WeaponButton : Node2D
 {
-	Button weaponButton;
+	Control weaponButton;
 	WeaponMenu weaponMenu;
 	Tween tween;
 	Vector2 firstScale;
+	Label text;
+	bool toggled;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		weaponButton = GetNode<Button>("Weapon Button");
+		weaponButton = GetNode<Control>("Control");
 		weaponMenu = (WeaponMenu)GetParent();
+		text = weaponButton.GetNode<Label>("Weapon Button");
 		firstScale = weaponButton.Scale;
 		weaponButton.MouseEntered += OnMouseEntered;
 		weaponButton.MouseExited += OnMouseExited;
@@ -21,16 +24,24 @@ public partial class WeaponButton : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (Input.IsActionJustPressed("LeftMouse"))
+		{
+			if (toggled)
+			{
+				ButtonDown();
+			}
+		}
 	}
 
 	void ButtonDown()
 	{
-		string weaponName = weaponButton.Text;
-		weaponMenu.Call("WeaponSpawn",weaponButton.Text);
+		string weaponName = text.Text;
+		weaponMenu.Call("WeaponSpawn",weaponName);
 	}
 
 	void OnMouseEntered()
 	{
+		toggled = true;
 		tween?.Kill();
 		tween = CreateTween();
 		tween.SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
@@ -38,6 +49,7 @@ public partial class WeaponButton : Node2D
 	}
 	void OnMouseExited()
 	{
+		toggled = false;
 		tween?.Kill();
 		tween = CreateTween();
 		tween.SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);

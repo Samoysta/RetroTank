@@ -12,7 +12,7 @@ top_level = true
 collision_layer = 0
 script = ExtResource("1_eyejd")
 childWeapon = ExtResource("2_dhu0s")
-WeaponAmount = 5
+WeaponAmount = 70
 speed = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=531791415]

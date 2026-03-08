@@ -55,7 +55,7 @@ scale = Vector2(30.84375, 17.843752)
 texture = SubResource("GradientTexture2D_ak5v8")
 
 [node name="EnemyManager" parent="Camera2D" unique_id=316115104 node_paths=PackedStringArray("player") instance=ExtResource("2_50ct6")]
-maxEnemy = 400
+maxEnemy = 300
 player = NodePath("../../Character")
 Laser1 = ExtResource("5_ak5v8")
 
