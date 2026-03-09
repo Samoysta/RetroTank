@@ -114,6 +114,7 @@ public partial class EnemyManager : Node2D
 				enem.GlobalPosition = pos;
 				GetTree().CurrentScene.AddChild(enem);
 				enem.Init(this);
+				enem.SetOn();
 			}
 			else
 			{

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bvsl5pv240qca"]
 
 [ext_resource type="Script" uid="uid://dpqtey02w5ow5" path="res://Scripts/Effect.cs" id="1_hxcho"]
+[ext_resource type="Texture2D" uid="uid://by75xt7kktghc" path="res://Assets/Smoke1.png" id="2_6tpqv"]
 
 [sub_resource type="Curve" id="Curve_6tpqv"]
 _data = [Vector2(0, 0.39306557), 0.0, 0.0, 0, 0, Vector2(1, 0.27703398), 0.0, 0.0, 0, 0]
@@ -14,11 +15,54 @@ point_count = 3
 [sub_resource type="Gradient" id="Gradient_cqhv2"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7xw4"]
+atlas = ExtResource("2_6tpqv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s46s"]
+atlas = ExtResource("2_6tpqv")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_incd8"]
+atlas = ExtResource("2_6tpqv")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akn8c"]
+atlas = ExtResource("2_6tpqv")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epn6m"]
+atlas = ExtResource("2_6tpqv")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6tpqv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7xw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3s46s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_incd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akn8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epn6m")
+}],
+"loop": false,
+"name": &"Start",
+"speed": 30.0
+}]
+
 [node name="HitEffectSmall" type="Node2D" unique_id=1385468231 node_paths=PackedStringArray("cpu", "gpu", "animSprite", "animPlayer")]
 script = ExtResource("1_hxcho")
 cpu = [NodePath("CPUParticles2D")]
 gpu = []
-animSprite = []
+animSprite = [NodePath("AnimatedSprite2D2")]
 animPlayer = []
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1980563054]
@@ -29,11 +73,17 @@ explosiveness = 1.0
 particle_flag_align_y = true
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 338.89
-initial_velocity_max = 338.89
+initial_velocity_min = 300.0
+initial_velocity_max = 300.0
 scale_amount_min = 10.0
 scale_amount_max = 10.0
 split_scale = true
 scale_curve_x = SubResource("Curve_6tpqv")
 scale_curve_y = SubResource("Curve_0e3de")
 color_ramp = SubResource("Gradient_cqhv2")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1237638621]
+position = Vector2(4, 14)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_6tpqv")
+animation = &"Start"

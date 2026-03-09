@@ -32,11 +32,7 @@ public partial class Bullet1 : Node2D
 					if (body.HasMethod("TakeDamage"))
 					{
 						body.Call("TakeDamage", damage);
-						Effect ef = character.damageEffects.Dequeue();
-						ef.GlobalPosition = hitPos;
-						ef.GlobalRotationDegrees = GlobalRotationDegrees;
-						ef.SetOn();
-						character.damageEffects.Enqueue(ef);
+						
 					}
 					SetOff();
 					HitEffect(hitPos);		

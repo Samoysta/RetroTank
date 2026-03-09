@@ -1,3 +1,4 @@
+res://Assets/
 res://Scenes/Weapons/
 res://Scripts/Weapons/
 res://Scripts/Enemys/
@@ -6,7 +7,6 @@ res://Scripts/
 res://Scenes/
 res://Scripts/Menu/
 res://Scenes/Menu/
-res://Assets/
 res://Scripts/Enemys/Manager/
 res://Scenes/Effects/
 res://Scenes/Enemys/TakeDamage/

@@ -5,9 +5,20 @@ public partial class FireBullet : Area2D
 {
 	[Export] float speed;
 	Weapon2 weapon2;
-	// Called when the node enters the scene tree for the first time.
+	bool setOffed;
+	CpuParticles2D effect;
+	Sprite2D sprite;
+	CollisionShape2D hitBox;
+	CpuParticles2D boom;
+	AnimatedSprite2D smokeSprite;
+
 	public override void _Ready()
 	{
+		effect = GetNode<CpuParticles2D>("CPUParticles2D");
+		boom = GetNode<CpuParticles2D>("Boom");
+		sprite = GetNode<Sprite2D>("CollisionShape2D/Sprite2D");
+		hitBox = GetNode<CollisionShape2D>("CollisionShape2D");
+		smokeSprite = GetNode<AnimatedSprite2D>("Smoke");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,12 +45,25 @@ public partial class FireBullet : Area2D
 
 	void SetOff()
 	{
-		Visible = false;
+		if (setOffed)
+		{
+			return;
+		}
+		setOffed = true;
+		sprite.Visible = false;
 		weapon2.bullets.Enqueue(this);
-		SetProcessMode(ProcessModeEnum.Disabled); 
+		effect.Emitting = false;
+		hitBox.Disabled = true;
+		SetProcess(false);
+		boom.Emitting = true;
+		smokeSprite.Play("Start");
 	}
 	public void SetOn()
 	{
-		Visible = true;
+		setOffed = false;
+		sprite.Visible = true;
+		effect.Emitting = true;
+		hitBox.Disabled = false;
+		SetProcess(true);
 	}
 }

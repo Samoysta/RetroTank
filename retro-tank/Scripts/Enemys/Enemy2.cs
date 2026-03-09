@@ -95,7 +95,7 @@ public partial class Enemy2 : CharacterBody2D
 	}
 	public void SetOn()
 	{
-		health = 5;
+		health = 7;
 		Visible = true;
 		SetProcess(true);
 		SetPhysicsProcess(true);

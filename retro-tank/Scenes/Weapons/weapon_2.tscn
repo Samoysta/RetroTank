@@ -12,7 +12,7 @@ top_level = true
 collision_layer = 0
 script = ExtResource("1_bre41")
 fireBullet = ExtResource("2_hcrvy")
-fireCD = 0.1
+fireCD = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=550567289]
 shape = SubResource("RectangleShape2D_o1y4a")

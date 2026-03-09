@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpqtey02w5ow5" path="res://Scripts/Effect.cs" id="1_bprkt"]
 [ext_resource type="Texture2D" uid="uid://bw5jxdb0vhm8g" path="res://Assets/FireEffect1.png" id="2_gyifg"]
+[ext_resource type="Texture2D" uid="uid://by75xt7kktghc" path="res://Assets/Smoke1.png" id="3_gyifg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_683qr"]
 atlas = ExtResource("2_gyifg")
@@ -53,11 +54,54 @@ animations = [{
 "speed": 60.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7xw4"]
+atlas = ExtResource("3_gyifg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s46s"]
+atlas = ExtResource("3_gyifg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_incd8"]
+atlas = ExtResource("3_gyifg")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akn8c"]
+atlas = ExtResource("3_gyifg")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epn6m"]
+atlas = ExtResource("3_gyifg")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qt0il"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7xw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3s46s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_incd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akn8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epn6m")
+}],
+"loop": false,
+"name": &"Start",
+"speed": 30.0
+}]
+
 [node name="FireEffect" type="Node2D" unique_id=490733582 node_paths=PackedStringArray("cpu", "gpu", "animSprite", "animPlayer")]
 script = ExtResource("1_bprkt")
 cpu = []
 gpu = []
-animSprite = [NodePath("AnimatedSprite2D")]
+animSprite = [NodePath("AnimatedSprite2D"), NodePath("AnimatedSprite2D2")]
 animPlayer = []
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1597603617]
@@ -69,3 +113,9 @@ sprite_frames = SubResource("SpriteFrames_p7xw4")
 animation = &"Start"
 frame = 5
 frame_progress = 1.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1147402753]
+position = Vector2(23, 11)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_qt0il")
+animation = &"Start"

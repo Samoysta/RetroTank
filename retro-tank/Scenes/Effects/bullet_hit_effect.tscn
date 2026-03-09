@@ -63,11 +63,15 @@ modulate = Color(18.892157, 0, 0, 1)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_1eusc")
 animation = &"Start"
+frame = 4
+frame_progress = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1231059836]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_1eusc")
 animation = &"Start"
+frame = 4
+frame_progress = 1.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1393072006]
 emitting = false
@@ -80,4 +84,6 @@ spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 346.83
 initial_velocity_max = 473.81
+linear_accel_min = -900.0
+linear_accel_max = -900.0
 color_ramp = SubResource("Gradient_3ef1u")

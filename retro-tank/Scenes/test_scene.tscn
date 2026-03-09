@@ -55,10 +55,11 @@ position = Vector2(4.9999905, 3.0517578e-05)
 texture = SubResource("GradientTexture2D_ak5v8")
 
 [node name="EnemyManager" parent="Camera2D" unique_id=316115104 node_paths=PackedStringArray("player") instance=ExtResource("2_50ct6")]
+enemySpawnCD = 1.0
 player = NodePath("../../Character")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Camera2D" unique_id=2058294337]
-modulate = Color(0.23529412, 0.16862746, 0.16862746, 1)
+modulate = Color(0.23921569, 0.5921569, 0.23921569, 1)
 z_index = -100
 position = Vector2(9.000061, 30.5)
 scale = Vector2(32.15625, 18.734375)
