@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dbr4p6aiti2xo" path="res://Scripts/Menu/WeaponButton.cs" id="1_stc2g"]
 [ext_resource type="FontFile" uid="uid://bdndf4mypoqg2" path="res://Assets/yoster.ttf" id="2_bft3v"]
+[ext_resource type="Texture2D" uid="uid://61lqifxfm1f4" path="res://Assets/Character.png" id="3_aybr6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bft3v"]
 font_size = 48
@@ -24,6 +25,96 @@ colors = PackedColorArray(0, 0, 0, 1)
 gradient = SubResource("Gradient_bft3v")
 width = 773
 height = 85
+
+[sub_resource type="Animation" id="Animation_f0yio"]
+resource_name = "Finish"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ok1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(0.23325826, 1),
+"update": 0,
+"values": [Vector2(837.50006, 43.000008), Vector2(733.50006, 43.000004)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ok2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(0.15467969, 1),
+"update": 0,
+"values": [Vector2(-60.5, 43), Vector2(46.5, 43)]
+}
+
+[sub_resource type="Animation" id="Animation_aybr6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ok1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(733.5, 43.000004)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ok2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(53.5, 43)]
+}
+
+[sub_resource type="Animation" id="Animation_becaa"]
+resource_name = "Start"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ok1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(0.39229208, 1),
+"update": 0,
+"values": [Vector2(733.50006, 43.000004), Vector2(837.50006, 43.000008)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ok2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5366667),
+"transitions": PackedFloat32Array(0.35355338, 1),
+"update": 0,
+"values": [Vector2(46.5, 43), Vector2(-60.5, 43)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f0yio"]
+_data = {
+&"Finish": SubResource("Animation_f0yio"),
+&"RESET": SubResource("Animation_aybr6"),
+&"Start": SubResource("Animation_becaa")
+}
 
 [node name="Weapon(Menu)" type="Node2D" unique_id=532637515]
 script = ExtResource("1_stc2g")
@@ -77,3 +168,20 @@ texture = SubResource("GradientTexture2D_becaa")
 [node name="OUTLINE" type="Sprite2D" parent="Control/BG" unique_id=236958321]
 z_index = -2
 texture = SubResource("GradientTexture2D_aybr6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control" unique_id=1421823900]
+libraries/ = SubResource("AnimationLibrary_f0yio")
+
+[node name="Ok1" type="Sprite2D" parent="Control" unique_id=600988618]
+z_index = -10
+position = Vector2(733.5, 43.000004)
+rotation = -1.5707964
+scale = Vector2(3, 3)
+texture = ExtResource("3_aybr6")
+
+[node name="Ok2" type="Sprite2D" parent="Control" unique_id=307915113]
+z_index = -10
+position = Vector2(53.5, 43)
+rotation = 1.5707964
+scale = Vector2(3, 3)
+texture = ExtResource("3_aybr6")

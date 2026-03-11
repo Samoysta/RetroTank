@@ -1,12 +1,14 @@
-res://Scenes/Weapons/fire_bullet.tscn
+res://Scenes/Mains/character.tscn
 res://Scenes/Enemys/TakeDamage/damage.gdshader
-res://Scripts/Weapons/FireBullet.cs
+res://Scenes/test_scene.tscn
+res://Scripts/Enemys/Manager/EnemyManager.cs
+res://Scripts/Character.cs
 res://Scripts/GameManager.cs
 res://Scripts/Enemys/Enemy2.cs
 res://Scripts/Enemys/Laser.cs
 res://Scripts/Enemys/Enemy1.cs
-res://Scripts/Enemys/Manager/EnemyManager.cs
 res://Scripts/Camera2d.cs
+res://Scripts/Weapons/FireBullet.cs
 res://Scripts/Weapons/Weapon2.cs
 res://Scripts/Weapons/DamageArea.cs
 res://Scripts/Weapons/Weapon1.cs
@@ -15,8 +17,4 @@ res://Scripts/Menu/WeaponMenu.cs
 res://Scripts/Coin.cs
 res://Scripts/Effect.cs
 res://Scripts/Bullet1.cs
-res://Scripts/Character.cs
-res://Scenes/Effects/fire_effect.tscn
-res://Scenes/Weapons/weapon_2.tscn
-res://Scenes/test_scene.tscn
-res://Scenes/Effects/hit_effect_small.tscn
+res://Scenes/Menu/weapon(menu).tscn

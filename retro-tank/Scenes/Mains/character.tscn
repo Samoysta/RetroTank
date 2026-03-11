@@ -183,9 +183,9 @@ height = 1080
 fill = 2
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="LabelSettings" id="LabelSettings_31v6o"]
+[sub_resource type="LabelSettings" id="LabelSettings_w0yte"]
 font = ExtResource("9_h4lc6")
-font_size = 102
+font_size = 70
 outline_size = 33
 outline_color = Color(0, 0, 0, 1)
 
@@ -205,6 +205,12 @@ colors = PackedColorArray(1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_yj70g"]
 gradient = SubResource("Gradient_anfai")
 
+[sub_resource type="LabelSettings" id="LabelSettings_31v6o"]
+font = ExtResource("9_h4lc6")
+font_size = 33
+outline_size = 33
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Character" type="CharacterBody2D" unique_id=671721879 node_paths=PackedStringArray("bulletPos", "damageAnim", "hpLabel", "killLabel", "weaponMenu", "coinLabel") groups=["Player"]]
 slide_on_ceiling = false
 platform_on_leave = 2
@@ -215,7 +221,7 @@ speedAccel = 5.0
 bulletPos = NodePath("CollisionShape2D/BulletPos")
 damageAnim = NodePath("DamageEffect")
 bullet1 = ExtResource("2_8r4o2")
-bulletCD = 0.1
+bulletCD = 0.13
 hitEffect = ExtResource("3_njf2r")
 fireEffect = ExtResource("4_vvjlk")
 damageEffect = ExtResource("5_hpxao")
@@ -359,15 +365,17 @@ z_index = -100
 position = Vector2(960.4999, 540.5)
 texture = SubResource("GradientTexture2D_h4lc6")
 
-[node name="WeaponMenu" type="Node2D" parent="UI" unique_id=496125334]
+[node name="WeaponMenu" type="Node2D" parent="UI" unique_id=496125334 node_paths=PackedStringArray("weaponInfo")]
 position = Vector2(960, 540)
 script = ExtResource("10_11l3c")
 weaponMenu = ExtResource("11_31v6o")
 weaponAmount = 2
 darlik = 10.0
+weaponInfo = NodePath("Info")
 weapons = Array[PackedScene]([ExtResource("12_31v6o"), ExtResource("14_w0yte")])
 icons = Array[Texture2D]([ExtResource("13_anfai"), ExtResource("16_xd1b3")])
 weaponNames = PackedStringArray("Nails", "FireBall")
+weaponDescriptions = PackedStringArray("Nails : There are 5 turning nails around you.", "FireBalls : Throwing FireBalls to the nearest enemie around you.")
 
 [node name="WeaoponsTitle" type="Label" parent="UI/WeaponMenu" unique_id=1401409587]
 anchors_preset = 8
@@ -384,7 +392,7 @@ grow_vertical = 2
 pivot_offset = Vector2(233.5, 51.5)
 size_flags_horizontal = 4
 text = "WEAPONS"
-label_settings = SubResource("LabelSettings_31v6o")
+label_settings = SubResource("LabelSettings_w0yte")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -397,5 +405,14 @@ modulate = Color(0.2627451, 0.2627451, 0.2627451, 0.44313726)
 z_index = -10
 scale = Vector2(16.91, 16.91)
 texture = SubResource("GradientTexture2D_yj70g")
+
+[node name="Info" type="Label" parent="UI/WeaponMenu" unique_id=1506388111]
+offset_left = -456.0
+offset_top = 255.0
+offset_right = 442.0
+offset_bottom = 496.0
+text = "Select a weapon."
+label_settings = SubResource("LabelSettings_31v6o")
+autowrap_mode = 2
 
 [connection signal="body_entered" from="CollisionShape2D/HitBox" to="." method="BodyEntered"]

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public partial class EnemyManager : Node2D
 {
 	[Export] int maxEnemy;
-	[Export] float enemySpawnCD;
+	[Export] public float enemySpawnCD;
 	[Export] Character player;
 	public int enemyAmount;
 	float enemyTimer;

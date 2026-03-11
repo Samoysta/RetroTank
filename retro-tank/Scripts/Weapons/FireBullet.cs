@@ -51,7 +51,6 @@ public partial class FireBullet : Area2D
 		}
 		setOffed = true;
 		sprite.Visible = false;
-		weapon2.bullets.Enqueue(this);
 		effect.Emitting = false;
 		hitBox.Disabled = true;
 		SetProcess(false);
@@ -65,5 +64,10 @@ public partial class FireBullet : Area2D
 		effect.Emitting = true;
 		hitBox.Disabled = false;
 		SetProcess(true);
+	}
+
+	void SmokeAnimationFinished()
+	{
+		weapon2.bullets.Enqueue(this);
 	}
 }

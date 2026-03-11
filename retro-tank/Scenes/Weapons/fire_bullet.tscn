@@ -121,3 +121,4 @@ frame = 4
 frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="BodyEntered2D"]
+[connection signal="finished" from="CPUParticles2D" to="." method="CpuFinished"]

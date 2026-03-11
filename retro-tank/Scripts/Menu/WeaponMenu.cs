@@ -9,13 +9,16 @@ public partial class WeaponMenu : Node2D
 	[Export] int weaponAmount;
 	Node2D[] weaponNodes;
 	[Export] float darlik;
+	[Export] Label weaponInfo;
 	//Weapons
 	[Export] PackedScene[] weapons;
 	[Export] Texture2D[] icons;
 	[Export] string[] weaponNames;
+	[Export] string[] weaponDescriptions;
 	List<PackedScene> weapons2D;
 	List<Texture2D> icons2D;
 	List<string> Names;
+	List<string> Descriptions;
 	Character character;
 	Tween tween;
 	bool selected;
@@ -36,6 +39,7 @@ public partial class WeaponMenu : Node2D
 		Names = new List<string>(weaponNames);
 		icons2D = new List<Texture2D>(icons);
 		weapons2D = new List<PackedScene>(weapons);
+		Descriptions = new List<string>(weaponDescriptions);
 		Visible = false;
 		Scale = Vector2.Zero;
 		ProcessMode = ProcessModeEnum.Disabled;
@@ -85,8 +89,10 @@ public partial class WeaponMenu : Node2D
 			Names.RemoveAt(index);
 			icons2D.RemoveAt(index);
 			weapons2D.RemoveAt(index);
+			Descriptions.RemoveAt(index);
 			SetOff();	
 			selected = true;
+			weaponInfo.Text = "Select a weapon";
 		}
 	}
 	public void SetOn()
@@ -115,5 +121,11 @@ public partial class WeaponMenu : Node2D
 		tween.SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
 		tween.TweenProperty(this, "scale", new Vector2(0,0), 0.3f).Finished += () => {ProcessMode = ProcessModeEnum.Disabled; Visible = false;};
 		GetTree().Paused = false;
+	}
+
+	public void Toggled(string weaponName)
+	{
+		int index = Names.IndexOf(weaponName);
+		weaponInfo.Text = Descriptions[index];
 	}
 }

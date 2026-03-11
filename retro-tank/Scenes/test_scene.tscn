@@ -1,9 +1,10 @@
-[gd_scene format=3 uid="uid://bydxmng4fanh"]
+[gd_scene format=4 uid="uid://bydxmng4fanh"]
 
 [ext_resource type="PackedScene" uid="uid://bd1yxwsnanycd" path="res://Scenes/Mains/character.tscn" id="1_3dogw"]
 [ext_resource type="PackedScene" uid="uid://chfh8dj8skfh2" path="res://Scenes/Mains/camera_2d.tscn" id="1_r5l72"]
 [ext_resource type="PackedScene" uid="uid://bw376tmeustu2" path="res://Scenes/enemy_manager.tscn" id="2_50ct6"]
 [ext_resource type="Script" uid="uid://b4mwy0yoq80p8" path="res://Scripts/GameManager.cs" id="4_hb2xm"]
+[ext_resource type="Texture2D" uid="uid://cb5exihqthtgd" path="res://Assets/decorateTileset.png" id="5_ak5v8"]
 
 [sub_resource type="Gradient" id="Gradient_50ct6"]
 colors = PackedColorArray(0, 0, 0, 1, 0.3647059, 0.54509807, 0.6509804, 1)
@@ -43,6 +44,28 @@ size = Vector2(9847, 2282)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ak5v8"]
 size = Vector2(9766, 1536.0182)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x033f"]
+texture = ExtResource("5_ak5v8")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+2:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_rdbpf"]
+sources/0 = SubResource("TileSetAtlasSource_x033f")
+
 [node name="TestScene" type="Node2D" unique_id=634171783]
 
 [node name="Camera2D" parent="." unique_id=633558077 node_paths=PackedStringArray("target") instance=ExtResource("1_r5l72")]
@@ -55,11 +78,10 @@ position = Vector2(4.9999905, 3.0517578e-05)
 texture = SubResource("GradientTexture2D_ak5v8")
 
 [node name="EnemyManager" parent="Camera2D" unique_id=316115104 node_paths=PackedStringArray("player") instance=ExtResource("2_50ct6")]
-enemySpawnCD = 1.0
 player = NodePath("../../Character")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Camera2D" unique_id=2058294337]
-modulate = Color(0.23921569, 0.5921569, 0.23921569, 1)
+modulate = Color(0.19607843, 0.44705883, 0.19607843, 1)
 z_index = -100
 position = Vector2(9.000061, 30.5)
 scale = Vector2(32.15625, 18.734375)
@@ -135,5 +157,12 @@ shape = SubResource("RectangleShape2D_rdbpf")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="GameManager/StaticBody2D/DeadZone" unique_id=749650843]
 position = Vector2(-795, 2988.009)
 shape = SubResource("RectangleShape2D_ak5v8")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=613789322]
+z_index = -99
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAD2//v/AAADAAAAAAAYAPT/AAADAAAAAAAYAPX/AAADAAEAAADT/+f/AAADAAEAADDT/+j/AAADAAAAADDR/wMAAAADAAEAAFDS/wMAAAADAAAAAFDR/wQAAAADAAEAAFDS/wQAAAADAAAAAFAzAB4AAAADAAEAAFA0AB4AAAADAAAAAFDy/xYAAAADAAEAAEDx/xYAAAADAAAAAEAxAOH/AAADAAEAAEAwAOH/AAADAAAAAEAxAOL/AAADAAEAAEAwAOL/AAADAAAAAEDI//v/AAADAAEAAEDH//v/AAADAAAAAEDH/woAAAADAAEAAEDG/woAAAADAAAAAEDe//b/AAACAAIAAADe//f/AAACAAMAAADv/+3/AAACAAIAAAAJAOn/AAACAAMAAAAdAP3/AAACAAMAAADe/xUAAAACAAMAABAPABkAAAACAAMAAED5/x8AAAACAAMAAFDJ/x8AAAACAAMAAFDR/xMAAAADAAIAAADR/xQAAAADAAMAAADk/wYAAAADAAIAAGDl/wYAAAADAAMAAGA2AAcAAAADAAIAAGA3AAcAAAADAAMAAGA4AO//AAADAAIAAGA5AO//AAADAAMAAGAyABsAAAADAAIAAGAzABsAAAADAAMAAGAbAB4AAAADAAIAAGAcAB4AAAADAAMAAGAQABcAAAADAAIAAHAPABcAAAADAAMAAHAlAAgAAAADAAMAACAlAAkAAAADAAIAACANAP7/AAAAAAAAAAD+//j/AAABAAAAAAD+//n/AAABAAEAAAD///j/AAACAAAAAAD///n/AAACAAEAAAAUAO7/AAABAAAAAFAUAO//AAACAAAAAFATAO7/AAABAAEAAFATAO//AAACAAEAAFDk/xUAAAABAAEAADDk/xYAAAABAAAAADDj/xUAAAACAAEAADDj/xYAAAACAAAAADDd//D/AAACAAEAAGDd//H/AAABAAEAAGDc//D/AAACAAAAAGDc//H/AAABAAAAAGAiABYAAAACAAAAAAAiABcAAAACAAEAAAAhABYAAAABAAAAAAAhABcAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_rdbpf")
+collision_enabled = false
 
 [connection signal="body_entered" from="GameManager/StaticBody2D/DeadZone" to="GameManager" method="BodyEntered"]

@@ -165,7 +165,14 @@ public partial class Character : CharacterBody2D
 			weaponMenu.ProcessMode = ProcessModeEnum.Always;
 			weaponMenu.Visible = true;
 			weaponMenu.SetOn();
-
+			if (manager.enemySpawnCD > 0.1f)
+			{
+				manager.enemySpawnCD -= 0.1f;
+			}
+			if (manager.enemySpawnCD <= 0.1f)
+			{
+				manager.enemySpawnCD = 0.1f;
+			}
 		}
 		killLabel.Text = $"{killAmount}";
 	}
