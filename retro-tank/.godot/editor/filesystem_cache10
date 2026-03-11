@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1773256793
+::res://::1773261869
 follower_click.gd::GDScript::-1::1772568130::0::1::::<>Marker2D<><>0<>0<><>::
 icon.svg::CompressedTexture2D::7720249925730089241::1772051621::1772051687::1::::<><><>0<>0<>51275322c677407327fcb3524e88033a<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 marker_2d.gd::GDScript::-1::1772568130::0::1::::<>Marker2D<><>0<>0<><>::
@@ -19,7 +19,7 @@ Radial2D.svg::CompressedTexture2D::5294797171325615259::1772568127::1772568133::
 THIRDPARTY.txt::TextFile::-1::1772568127::0::1::::<><><>0<>0<><>::
 water_shader.gdshader::Shader::5244640210084459761::1772568127::0::1::::<><><>0<>0<><>::
 water_shader.tres::ShaderMaterial::6495341302912672044::1772568127::0::1::::<><><>0<>0<><>::res://addons/godot-rapier2d/water_shader.gdshader
-::res://addons/godot-rapier2d/bin/::1773256785
+::res://addons/godot-rapier2d/bin/::1773261864
 ::res://addons/godot-rapier2d/bin/libgodot_rapier.ios.arm64.framework/::1772568128
 ::res://addons/godot-rapier2d/bin/libgodot_rapier.ios.x86_64.framework/::1772568130
 ::res://addons/godot-rapier2d/bin/libgodot_rapier.macos.framework/::1772568130
@@ -61,11 +61,11 @@ yoster.ttf::FontFile::2624016748183670535::1772367370::1772367371::1::::<><><>0<
 Weapon1.png::CompressedTexture2D::4614096326478176461::1772649185::1772649930::1::::<><><>0<>0<>c81e17cf9e310d9a81bbfbee14a092ec<>res://.godot/imported/Weapon1.png-c4196a1286c22e3db3be1354a7dbf7a4.ctex::
 Weapon 1 icon.png::CompressedTexture2D::8136685629400609201::1772889788::1772889789::1::::<><><>0<>0<>d077576d1117650b0475d0f4cd439386<>res://.godot/imported/Weapon 1 icon.png-b6775204338763e188aeb4472296db00.ctex::
 Weapon 2 icon.png::CompressedTexture2D::2665448612950336060::1772977925::1772977925::1::::<><><>0<>0<>c643df2111197518f0984e638b1f0866<>res://.godot/imported/Weapon 2 icon.png-8051826bb26cd463c6013fc2567b79bc.ctex::
-::res://Scenes/::1773172675
+::res://Scenes/::1773259855
 bullet_1.tscn::PackedScene::8506840827292331808::1772374096::0::1::::<><><>0<>0<><>::uid://cflln2j3k6m0p::::res://Assets/bullet1.png<>uid://bnr3tp3atjacq::::res://Scripts/Bullet1.cs
 coin.tscn::PackedScene::51217458338257517::1772974415::0::1::::<><><>0<>0<><>::uid://5icva43dlk5j::::res://Assets/Coin.png<>uid://b4swauqs811ns::::res://Scripts/Coin.cs
 enemy_manager.tscn::PackedScene::3990377140913570143::1772976229::0::1::::<><><>0<>0<><>::uid://bfil204tuymux::::res://Scripts/Enemys/Manager/EnemyManager.cs<>uid://duxflro3cm2fw::::res://Scenes/Enemys/enemy_1.tscn<>uid://ce4varmwf0raa::::res://Scenes/Enemys/laser.tscn<>uid://wwdqcnyymu02::::res://Scenes/Enemys/enemy_2.tscn
-test_scene.tscn::PackedScene::119957784647801401::1773172675::0::1::::<><><>0<>0<><>::uid://bd1yxwsnanycd::::res://Scenes/Mains/character.tscn<>uid://chfh8dj8skfh2::::res://Scenes/Mains/camera_2d.tscn<>uid://bw376tmeustu2::::res://Scenes/enemy_manager.tscn<>uid://b4mwy0yoq80p8::::res://Scripts/GameManager.cs<>uid://cb5exihqthtgd::::res://Assets/decorateTileset.png
+test_scene.tscn::PackedScene::119957784647801401::1773259855::0::1::::<><><>0<>0<><>::uid://bd1yxwsnanycd::::res://Scenes/Mains/character.tscn<>uid://chfh8dj8skfh2::::res://Scenes/Mains/camera_2d.tscn<>uid://bw376tmeustu2::::res://Scenes/enemy_manager.tscn<>uid://b4mwy0yoq80p8::::res://Scripts/GameManager.cs<>uid://cb5exihqthtgd::::res://Assets/decorateTileset.png
 ::res://Scenes/Effects/::1773172680
 bullet_hit_effect.tscn::PackedScene::6267668402223041735::1773172680::0::1::::<><><>0<>0<><>::uid://dpqtey02w5ow5::::res://Scripts/Effect.cs<>uid://mtqwnxip0i8f::::res://Assets/BulletSpawnEffect1.png<>uid://cflln2j3k6m0p::::res://Assets/bullet1.png
 character_damage_effect.tscn::PackedScene::3573708115329339637::1772270906::0::1::::<><><>0<>0<><>::uid://dpqtey02w5ow5::::res://Scripts/Effect.cs
@@ -76,13 +76,13 @@ world_environment.tscn::PackedScene::8144065113515417875::1773171981::0::1::::<>
 enemy_1.tscn::PackedScene::8610843756679693740::1772983669::0::1::::<><><>0<>0<><>::uid://uyl0cqti1q7j::::res://Scripts/Enemys/Enemy1.cs<>uid://cn7kvy3yv5ooi::::res://Scenes/Enemys/TakeDamage/damage.gdshader<>uid://ccx7gxj7htrr2::::res://Assets/Enemy.png
 enemy_2.tscn::PackedScene::1589781720558980829::1772987658::0::1::::<><><>0<>0<><>::uid://db58nrqnv5ngw::::res://Scripts/Enemys/Enemy2.cs<>uid://cn7kvy3yv5ooi::::res://Scenes/Enemys/TakeDamage/damage.gdshader<>uid://d02o4e7ows27g::::res://Assets/Enemy2.png
 laser.tscn::PackedScene::5114739666096029596::1772956179::0::1::::<><><>0<>0<><>::uid://dv8s3883hlfw::::res://Scripts/Enemys/Laser.cs
-::res://Scenes/Enemys/TakeDamage/::1773172587
-damage.gdshader::Shader::5752002399344839516::1773172587::0::1::::<><><>0<>0<><>::
-::res://Scenes/Mains/::1773172587
+::res://Scenes/Enemys/TakeDamage/::1773256856
+damage.gdshader::Shader::5752002399344839516::1773256856::0::1::::<><><>0<>0<><>::
+::res://Scenes/Mains/::1773261717
 camera_2d.tscn::PackedScene::5274969284768066797::1772051621::0::1::::<><><>0<>0<><>::uid://3myyd2fpiy63::::res://Scripts/Camera2d.cs
-character.tscn::PackedScene::2652160501210342063::1773172586::0::1::::<><><>0<>0<><>::uid://61lqifxfm1f4::::res://Assets/Character.png<>uid://dy1p7rhus2m8m::::res://Scripts/Character.cs<>uid://dtg1op7h288lo::::res://Scenes/bullet_1.tscn<>uid://cvkdt2185gfad::::res://Scenes/Effects/bullet_hit_effect.tscn<>uid://cea5yx7urpsnb::::res://Scenes/Effects/fire_effect.tscn<>uid://bvsl5pv240qca::::res://Scenes/Effects/hit_effect_small.tscn<>uid://bk2ftuo4cf80q::::res://addons/trail_2d/trail_2d.gd<>uid://y2sq6to8tij::::res://Scenes/coin.tscn<>uid://cflln2j3k6m0p::::res://Assets/bullet1.png<>uid://bdndf4mypoqg2::::res://Assets/yoster.ttf<>uid://8i27d0vj3s7u::::res://Scripts/Menu/WeaponMenu.cs<>uid://df143eh002vdg::::res://Scenes/Menu/weapon(menu).tscn<>uid://djrjq03rum2dn::::res://Scenes/Weapons/weapon_1.tscn<>uid://dn6qa2g5dkuir::::res://Assets/Weapons/Weapon 1 icon.png<>uid://ddpedrbacm3xk::::res://Scenes/Weapons/weapon_2.tscn<>uid://bd8fsw54wev3q::::res://Assets/Weapons/Weapon 2 icon.png
-::res://Scenes/Menu/::1772948172
-weapon(menu).tscn::PackedScene::7565691107971994888::1772948172::0::1::::<><><>0<>0<><>::uid://dbr4p6aiti2xo::::res://Scripts/Menu/WeaponButton.cs<>uid://bdndf4mypoqg2::::res://Assets/yoster.ttf
+character.tscn::PackedScene::2652160501210342063::1773261717::0::1::::<><><>0<>0<><>::uid://61lqifxfm1f4::::res://Assets/Character.png<>uid://dy1p7rhus2m8m::::res://Scripts/Character.cs<>uid://dtg1op7h288lo::::res://Scenes/bullet_1.tscn<>uid://cvkdt2185gfad::::res://Scenes/Effects/bullet_hit_effect.tscn<>uid://cea5yx7urpsnb::::res://Scenes/Effects/fire_effect.tscn<>uid://bvsl5pv240qca::::res://Scenes/Effects/hit_effect_small.tscn<>uid://bk2ftuo4cf80q::::res://addons/trail_2d/trail_2d.gd<>uid://y2sq6to8tij::::res://Scenes/coin.tscn<>uid://cflln2j3k6m0p::::res://Assets/bullet1.png<>uid://bdndf4mypoqg2::::res://Assets/yoster.ttf<>uid://8i27d0vj3s7u::::res://Scripts/Menu/WeaponMenu.cs<>uid://df143eh002vdg::::res://Scenes/Menu/weapon(menu).tscn<>uid://djrjq03rum2dn::::res://Scenes/Weapons/weapon_1.tscn<>uid://dn6qa2g5dkuir::::res://Assets/Weapons/Weapon 1 icon.png<>uid://ddpedrbacm3xk::::res://Scenes/Weapons/weapon_2.tscn<>uid://bd8fsw54wev3q::::res://Assets/Weapons/Weapon 2 icon.png
+::res://Scenes/Menu/::1773259720
+weapon(menu).tscn::PackedScene::7565691107971994888::1773259720::0::1::::<><><>0<>0<><>::uid://dbr4p6aiti2xo::::res://Scripts/Menu/WeaponButton.cs<>uid://bdndf4mypoqg2::::res://Assets/yoster.ttf<>uid://61lqifxfm1f4::::res://Assets/Character.png
 ::res://Scenes/Weapons/::1773171438
 fire_bullet.tscn::PackedScene::6292635644562090849::1773170647::0::1::::<><><>0<>0<><>::uid://datqfm0rhsxnf::::res://Scripts/Weapons/FireBullet.cs<>uid://bd8fsw54wev3q::::res://Assets/Weapons/Weapon 2 icon.png<>uid://by75xt7kktghc::::res://Assets/Smoke1.png
 weapon_1.tscn::PackedScene::7826632448415896479::1772987285::0::1::::<><><>0<>0<><>::uid://c8vvnpuysmhi5::::res://Scripts/Weapons/Weapon1.cs<>uid://dgmm3d113luo7::::res://Scenes/Weapons/weapon_1s_childs.tscn<>uid://dn6qa2g5dkuir::::res://Assets/Weapons/Weapon 1 icon.png
@@ -91,7 +91,7 @@ weapon_2.tscn::PackedScene::7401043368102011848::1773171438::0::1::::<><><>0<>0<
 ::res://Scripts/::1772960935
 Bullet1.cs::CSharpScript::3335704909818712268::1773089317::0::1::::<>Node2D<><>0<>0<><>::
 Camera2d.cs::CSharpScript::1991560421321071786::1772051621::0::1::::<>Camera2D<><>0<>0<><>::
-Character.cs::CSharpScript::8898436924938510294::1772979958::0::1::::<>CharacterBody2D<><>0<>0<><>::
+Character.cs::CSharpScript::8898436924938510294::1773258094::0::1::::<>CharacterBody2D<><>0<>0<><>::
 Coin.cs::CSharpScript::4460392798656841044::1772974929::0::1::::<>Node2D<><>0<>0<><>::
 Effect.cs::CSharpScript::8246286816190793522::1772134331::0::1::::<>Node2D<><>0<>0<><>::
 GameManager.cs::CSharpScript::4448049665957200587::1772376002::0::1::::<>Node2D<><>0<>0<><>::
@@ -100,10 +100,10 @@ Enemy1.cs::CSharpScript::1454034601264711993::1772983698::0::1::::<>CharacterBod
 Enemy2.cs::CSharpScript::7293410021654926838::1772988711::0::1::::<>CharacterBody2D<><>0<>0<><>::
 Laser.cs::CSharpScript::255955791970358084::1772566855::0::1::::<>Area2D<><>0<>0<><>::
 ::res://Scripts/Enemys/Manager/::1772341602
-EnemyManager.cs::CSharpScript::2754597386045643791::1772987957::0::1::::<>Node2D<><>0<>0<><>::
+EnemyManager.cs::CSharpScript::2754597386045643791::1773257663::0::1::::<>Node2D<><>0<>0<><>::
 ::res://Scripts/Menu/::1772885598
-WeaponButton.cs::CSharpScript::7266334524848227320::1772945810::0::1::::<>Node2D<><>0<>0<><>::
-WeaponMenu.cs::CSharpScript::2334443563454652268::1772982230::0::1::::<>Node2D<><>0<>0<><>::
+WeaponButton.cs::CSharpScript::7266334524848227320::1773261034::0::1::::<>Node2D<><>0<>0<><>::
+WeaponMenu.cs::CSharpScript::2334443563454652268::1773261464::0::1::::<>Node2D<><>0<>0<><>::
 ::res://Scripts/Weapons/::1772979017
 DamageArea.cs::CSharpScript::913315726791387551::1772654891::0::1::::<>Area2D<><>0<>0<><>::
 FireBullet.cs::CSharpScript::7199466298943030011::1773170715::0::1::::<>Area2D<><>0<>0<><>::
