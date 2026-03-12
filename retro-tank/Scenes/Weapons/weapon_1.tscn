@@ -8,6 +8,7 @@
 radius = 22.203604
 
 [node name="weapon1" type="Area2D" unique_id=1463286860]
+modulate = Color(2.454227, 2.454227, 2.454227, 1)
 top_level = true
 collision_layer = 0
 script = ExtResource("1_eyejd")

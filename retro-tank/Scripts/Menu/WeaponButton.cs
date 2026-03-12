@@ -10,7 +10,6 @@ public partial class WeaponButton : Node2D
 	Vector2 firstScale;
 	Label text;
 	bool toggled;
-	AnimationPlayer anim;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -20,7 +19,6 @@ public partial class WeaponButton : Node2D
 		firstScale = weaponButton.Scale;
 		weaponButton.MouseEntered += OnMouseEntered;
 		weaponButton.MouseExited += OnMouseExited;
-		anim = weaponButton.GetNode<AnimationPlayer>("AnimationPlayer");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,7 +41,6 @@ public partial class WeaponButton : Node2D
 
 	void OnMouseEntered()
 	{
-		anim.Play("Start");
 		toggled = true;
 		tween?.Kill();
 		tween = CreateTween();
@@ -53,7 +50,6 @@ public partial class WeaponButton : Node2D
 	}
 	void OnMouseExited()
 	{
-		anim.PlayBackwards("Start");
 		toggled = false;
 		tween?.Kill();
 		tween = CreateTween();

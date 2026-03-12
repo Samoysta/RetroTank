@@ -84,6 +84,7 @@ scale = Vector2(4.6, 4.6)
 texture = ExtResource("2_ovp3v")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1905733972]
+modulate = Color(3.294, 3.294, 3.294, 1)
 z_index = -1
 amount = 16
 texture = SubResource("GradientTexture2D_ovp3v")
@@ -111,8 +112,10 @@ linear_accel_max = -2000.0
 scale_amount_min = 2.0
 scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_s46vb")
+color = Color(2.8223546, 2.8223546, 2.8223546, 1)
 
 [node name="Smoke" type="AnimatedSprite2D" parent="." unique_id=16796804]
+modulate = Color(10.5787325, 10.5787325, 10.5787325, 1)
 position = Vector2(0, 9)
 scale = Vector2(4.645, 4.645)
 sprite_frames = SubResource("SpriteFrames_kcu0g")

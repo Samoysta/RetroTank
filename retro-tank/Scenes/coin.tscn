@@ -8,6 +8,7 @@ script = ExtResource("1_jgi06")
 spawnDistance = 150
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=3917868]
+modulate = Color(0.7945052, 1.032129, 8.670037, 1)
 z_index = -2
 scale = Vector2(3, 3)
 texture = ExtResource("1_2qo34")

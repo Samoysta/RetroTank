@@ -83,6 +83,7 @@ scale_curve_y = SubResource("Curve_0e3de")
 color_ramp = SubResource("Gradient_cqhv2")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1237638621]
+modulate = Color(2.454227, 2.454227, 2.454227, 1)
 position = Vector2(4, 14)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_6tpqv")

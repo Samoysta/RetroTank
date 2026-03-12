@@ -6,6 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_2dt4e"]
 
 [node name="Bullet1" type="Node2D" unique_id=1309950049 node_paths=PackedStringArray("shapeCast")]
+modulate = Color(2.454, 2.454, 0, 1)
 script = ExtResource("1_yxq1y")
 shapeCast = NodePath("ShapeCast2D")
 speed = 1400.0
